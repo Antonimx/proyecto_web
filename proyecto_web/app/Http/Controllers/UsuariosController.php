@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsuarioRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Models\Perfil;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+
 
 class UsuariosController extends Controller
 {
@@ -12,7 +18,13 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+        if(Gate::denies('usuarios-gestion'))
+        {
+            return redirect()->route('home.index');
+        }
+
+        $usuarios = Usuario::orderBy('perfil_id')->orderBy('nombre')->get();
+        return view('usuarios.index',compact('usuarios'));
     }
 
     /**
@@ -20,15 +32,21 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        //
+        $perfiles = Perfil::all();
+        return view('usuarios.create',compact('perfiles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->rut = $request->rut;
+        $usuario->password = Hash::make($request->rut);
+        $usuario->nombre = $request->nombre;
+        $usuario->save();
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -60,6 +78,7 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
     }
 }

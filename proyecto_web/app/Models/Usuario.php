@@ -28,4 +28,14 @@ class Usuario extends Authenticatable
     {
         return $this->belongsToMany(Vehiculo::class)->withPivot(['fehca_inicio','fecha_entrega','hora_entrega','imagen_entrega']);
     }
+
+    public function nombrePerfil():String
+    {
+        return $this->perfil->nombre;
+    }
+
+    public function esAdministrador():bool
+    {
+        return $this->perfil->nombre=='Administrador';
+    }
 }
