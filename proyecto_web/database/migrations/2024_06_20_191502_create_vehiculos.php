@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('imagen');
             $table->unsignedInteger('tipo_id');
             $table->foreign('tipo_id')->references('id')->on('tipos');
+            $table->softDeletes();
 
             //$table->timestamps();
         });
