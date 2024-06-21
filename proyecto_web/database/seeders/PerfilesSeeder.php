@@ -17,7 +17,6 @@ class PerfilesSeeder extends Seeder
         DB::table('perfiles')->insert([
             ['nombre'=>'Administrador'],
             ['nombre'=>'Ejecutivo'],
-            ['nombre'=>'Cliente'],
         ]);
     }
 }

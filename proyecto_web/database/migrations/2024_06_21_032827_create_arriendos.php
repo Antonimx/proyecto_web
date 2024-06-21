@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios_vehiculos', function (Blueprint $table) {
+        Schema::create('arriendos', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_inicio');
-            $table->date('fecha_entrega');
-            $table->time('hora_entrega');
-            $table->string('imagen_entrega');
+            $table->string('imagen_inicio');
+            $table->date('fecha_entrega')->default(null);
+            $table->time('hora_entrega')->default(null);
+            $table->string('imagen_entrega')->default(null);
             $table->string('rut',15);
             $table->string('patente');
             $table->foreign('rut')->references('rut')->on('usuarios');

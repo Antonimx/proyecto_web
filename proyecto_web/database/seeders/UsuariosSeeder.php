@@ -15,7 +15,8 @@ class UsuariosSeeder extends Seeder
     public function run(): void
     {
         DB::table('usuarios')->insert([
-            ['rut'=>'1234','password'=>Hash::make('1234'),'nombre'=>'Administrador 1','activo'=>true,'perfil_id'=>1],
+            ['email'=>'admin1@gmail.cl','password'=>Hash::make('1234'),'nombre'=>'Administrador 1','activo'=>true,'perfil_id'=>1],
+            ['email'=>'ejecutivo1@gmail.cl','password'=>Hash::make('5678'),'nombre'=>'Ejecutivo 1','activo'=>true,'perfil_id'=>2]
             
         ]);
     }

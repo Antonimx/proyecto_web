@@ -23,7 +23,7 @@ class UsuariosController extends Controller
             return redirect()->route('home.index');
         }
 
-        $usuarios = Usuario::orderBy('perfil_id')->orderBy('nombre')->get();
+        $usuarios = Usuario::orderBy('nombre')->get();
         return view('usuarios.index',compact('usuarios'));
     }
     
@@ -45,6 +45,7 @@ class UsuariosController extends Controller
         }
         return back()->withErrors('Credenciales incorrectas :(')->onlyInput('rut');
     }
+    
     /**
      * Show the form for creating a new resource.
      */

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TipoRequest;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class TiposController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TipoRequest $request)
     {
         $tipo = new Tipo();
         $tipo->nombre = $request->nombre;
