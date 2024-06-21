@@ -17,8 +17,8 @@
                             @csrf
                             {{-- email --}}
                             <div class="mb-3">
-                                <label for="email">Rut</label>
-                                <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
                             </div>
 
                             {{-- password --}}

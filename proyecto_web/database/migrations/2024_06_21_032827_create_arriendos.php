@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('imagen_entrega')->default(null);
             $table->string('rut',15);
             $table->string('patente');
-            $table->foreign('rut')->references('rut')->on('usuarios');
+            $table->foreign('rut')->references('rut')->on('clientes');
             $table->foreign('patente')->references('patente')->on('vehiculos');
          
             //$table->timestamps();
