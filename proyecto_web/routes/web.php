@@ -32,8 +32,11 @@ Route::resource('/tipos',TiposController::class)->middleware('auth');
 Route::resource('/perfiles',PerfilesController::class)->middleware('auth');
 
 //Arriendos
-Route::resource('/arriendos',ArriendosController::class)->middleware('auth');
-Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar')->middleware('auth');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('/arriendos',ArriendosController::class,['except'=>['create']]);
+    Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar');
+    Route::get('/arriendos/create/{patente}',[ArriendosController::class,'create'])->name('arriendos.create');
+});
 
 //Clientes
 Route::resource('/clientes',ClientesController::class)->middleware('auth');

@@ -1,24 +1,77 @@
-@extends('templates/master')
+@extends('templates.master')
 
-@section
+@section('contenido-pagina')
 
-{{-- aca iria el card del auto --}}
+{{-- CARD AUTO --}}
+<row>
+  <div class="card border-info mb-3 text-dark" style="">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{$vehiculo->imagen}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{$vehiculo->nombre}}</h5>
+          <hr class="bg-info border-info" style="height: 2px;">
+          <p class="card-text">
+            {{$vehiculo->descripcion}}
+            <ul ">
+              <li><b ">Marca: </b>{{$vehiculo->marca}}</li>
+              <li><b ">Modelo: </b> {{$vehiculo->modelo}}</li>
+              <li><b ">Tipo: </b> {{$vehiculo->tipo->nombre}}</li>
+            </ul>
+          </p>
 
-{{-- FORMULARIO --}}
-<form>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+</row>
+{{-- /CARD AUTO --}}
+
+{{-- FORM PARA ARRENDAR --}}
+<row class="">
+  <form class="border border-info bg-white p-2 rounded" method="POST" action="{{route('arriendos.store')}}">
+    @csrf
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownCliente">
+        Seleccione cliente
+      </button>
+      <ul class="dropdown-menu">
+        @foreach($clientes as $cliente)
+          <li><a class="dropdown-item" href="#" onclick="selectCliente('{{$cliente->rut}}')">{{$cliente->rut}} {{$cliente->nombre}}</a></li>
+        @endforeach
+      </ul>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button" id="clienteSeleccionado" name="rut">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="fecha" class="form-label text-dark">Fecha de arriendo</label>
+          <input type="date" id="fecha" name="fecha_incio" class="form-control"">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="patente" class="form-label">Patente</label>
+          <input type="text" class="form-control" id="patente" nombre="patente" value="{{$vehiculo->patente}}"disabled>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row">
+      <div class="col d-flex justify-content-start">
+        <a href="{{ route('arriendos.index') }}" class="btn btn-danger text-white">Cancelar</a>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button type="submit" class="btn text-white btn-info">Arrendar</button>
+      </div>
+    </div>
   </form>
+</row>
+<script>
+  function selectCliente(cliente) {
+    document.getElementById('clienteSeleccionado').value = cliente;
+  }
+</script>
+{{-- /FORMULARIO --}}
 @endsection
