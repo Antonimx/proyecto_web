@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nombre');
             $table->boolean('activo')->default(true);
-            $table->unsignedInteger('perfil_id');
+            $table->unsignedBigInteger('perfil_id');
             $table->foreign('perfil_id')->references('id')->on('perfiles');
             $table->softDeletes();
 

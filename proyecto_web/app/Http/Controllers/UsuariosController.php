@@ -26,7 +26,25 @@ class UsuariosController extends Controller
         $usuarios = Usuario::orderBy('perfil_id')->orderBy('nombre')->get();
         return view('usuarios.index',compact('usuarios'));
     }
+    
+    public function login()
+    {
+        return view('usuarios.login');
+    }
 
+    public function autenticar(Request $request)
+    {
+        // $credenciales = ['email'=>$request->email,'password'=>$request->password];
+        $credenciales = $request->only(['rut','password']);
+
+        if(Auth::attempt($credenciales))
+        {
+            //credenciales correctas
+            $request->session()->regenerate();
+            return redirect()->route('home.index');
+        }
+        return back()->withErrors('Credenciales incorrectas :(')->onlyInput('rut');
+    }
     /**
      * Show the form for creating a new resource.
      */

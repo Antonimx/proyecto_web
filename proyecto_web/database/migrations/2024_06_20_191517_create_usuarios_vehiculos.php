@@ -17,10 +17,10 @@ return new class extends Migration
             $table->date('fecha_entrega');
             $table->time('hora_entrega');
             $table->string('imagen_entrega');
-            $table->string('rut_cliente',15);
+            $table->string('rut',15);
             $table->string('patente');
-            $table->foreign('rut_cliente')->references('rut')->on('usuarios');
-            $table->foreign('patente_vehiculo')->references('patente')->on('vehiculos');
+            $table->foreign('rut')->references('rut')->on('usuarios');
+            $table->foreign('patente')->references('patente')->on('vehiculos');
             
             
             

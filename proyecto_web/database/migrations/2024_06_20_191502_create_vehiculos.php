@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('modelo');
             $table->unsignedTinyInteger('estado')->default(1);
             $table->string('imagen');
-            $table->unsignedInteger('tipo_id');
+            $table->unsignedBigInteger('tipo_id');
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->softDeletes();
 
