@@ -22,11 +22,11 @@ class ArriendosController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($patente)
     {
         $clientes = Cliente::all(); 
-        $vehiculos = Vehiculo::all(); 
-        return view('arriendos.create',compact('clientes','vehiculos'));
+        $vehiculo = Vehiculo::where('patente',$patente)->first(); 
+        return view('arriendos.create',compact('clientes','vehiculo'));
     }
 
     /**
