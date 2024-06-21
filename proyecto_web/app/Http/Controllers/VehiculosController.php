@@ -33,7 +33,7 @@ class VehiculosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VehiculoRequest $request)
     {
         $vehiculo = new Vehiculo();
         $vehiculo->patente = $request->patente;
@@ -41,14 +41,15 @@ class VehiculosController extends Controller
         $vehiculo->modelo = $request->modelo;
         $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
         $vehiculo->save();
-        return redirect()->route('vehiculos.index');
+        return redirect()->route('vehiculos.index')->with('success','Datos guardados correctamente.');
 
     }
 
+    //arriendos
     /**
      * Display the specified resource.
      */
-    public function show(Vehiculo $vehiculo)
+    public function show()
     {
         //
     }
@@ -56,17 +57,24 @@ class VehiculosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vehiculo $vehiculo)
+    public function edit($patente)
     {
-        //
+        $vehiculo = Vehiculo::find($patente);
+        return view('vehiculos.edit',compact('vehiculo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vehiculo $vehiculo)
+    public function update(VehiculoRequest $request, $patente)
     {
-        //
+        $vehiculo = Vehiculo::find($patente);
+        $vehiculo->patente = $request->patente;
+        $vehiculo->marca = $request->marca;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        $vehiculo->save();
+        return redirect()->route('vehiculos.index')->with('success','Datos actualizados correctamente.');
     }
 
     /**

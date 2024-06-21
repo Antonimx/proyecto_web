@@ -32,10 +32,16 @@ class UsuariosController extends Controller
         return view('usuarios.login');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('usuarios.login');
+    }
+
     public function autenticar(Request $request)
     {
         // $credenciales = ['email'=>$request->email,'password'=>$request->password];
-        $credenciales = $request->only(['rut','password']);
+        $credenciales = $request->only(['email','password']);
 
         if(Auth::attempt($credenciales))
         {
@@ -43,7 +49,7 @@ class UsuariosController extends Controller
             $request->session()->regenerate();
             return redirect()->route('home.index');
         }
-        return back()->withErrors('Credenciales incorrectas :(')->onlyInput('rut');
+        return back()->withErrors('Credenciales incorrectas.')->onlyInput('email');
     }
     
     /**
@@ -61,11 +67,12 @@ class UsuariosController extends Controller
     public function store(UsuarioRequest $request)
     {
         $usuario = new Usuario();
-        $usuario->rut = $request->rut;
-        $usuario->password = Hash::make($request->rut);
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
         $usuario->nombre = $request->nombre;
+        $usuario->perfil_id = $request->perfil_id;
         $usuario->save();
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('success','Datos guardados correctamente.');
     }
 
     /**
@@ -79,17 +86,26 @@ class UsuariosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
+    public function edit($email)
     {
-        
+        $usuario = Usuario::find($email);
+        $perfiles = Perfil::all();
+        return view('usuarios.edit',compact('usuario','perfiles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioRequest $request, $email)
     {
-        //
+        $usuario = Usuario::find($email);
+
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+        $usuario->nombre = $request->nombre;
+        $usuario->perfil_id = $request->perfil_id;
+        $usuario->save();
+        return redirect()->route('usuarios.index')->with('success','Datos actualizados correctamente.');
     }
 
     /**
