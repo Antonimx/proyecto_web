@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistema de Solicitudes</title>
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom-bs.min.css') }}" rel="stylesheet">
 </head>
 <body style="background-color: #C0D4C6">
     <div class="container vh-100 d-flex align-items-center">

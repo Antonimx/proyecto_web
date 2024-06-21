@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página con Navbar de Bootstrap</title>
     <!-- Enlace al archivo CSS de Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom-bs.min.css') }}">
 
 </head>
 <body>

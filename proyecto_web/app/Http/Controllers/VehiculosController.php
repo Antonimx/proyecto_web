@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\VehiculoRequest;
+
 
 class VehiculosController extends Controller
 {
@@ -12,7 +15,9 @@ class VehiculosController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculos = Vehiculo::orderBy('modelo')->get();
+        return view('vehiculos.index',compact('vehiculos'));
+
     }
 
     /**
@@ -20,7 +25,9 @@ class VehiculosController extends Controller
      */
     public function create()
     {
-        //
+        $tipos = Tipo::all();
+        return view('vehiculos.create',compact('vehiculos'));
+
     }
 
     /**
@@ -28,7 +35,14 @@ class VehiculosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehiculo = new Vehiculo();
+        $vehiculo->patente = $request->patente;
+        $vehiculo->marca = $request->marca;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        $vehiculo->save();
+        return redirect()->route('vehiculos.index');
+
     }
 
     /**
@@ -60,6 +74,7 @@ class VehiculosController extends Controller
      */
     public function destroy(Vehiculo $vehiculo)
     {
-        //
+        $vehiculo->delete();
+        return redirect()->route('vehiculos.index');
     }
 }

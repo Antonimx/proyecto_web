@@ -80,7 +80,7 @@ class UsuariosController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        
     }
 
     /**

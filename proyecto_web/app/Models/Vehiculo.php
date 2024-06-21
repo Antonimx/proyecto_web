@@ -21,8 +21,4 @@ class Vehiculo extends Model
         return $this->belongsTo(Tipo::class);
     }
 
-    public function usuarios():BelongsToMany
-    {
-        return $this->belongsToMany(Usuario::class)->withPivot(['fehca_inicio','fecha_entrega','hora_entrega','imagen_entrega']);;
-    }
 }

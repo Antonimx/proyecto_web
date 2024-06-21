@@ -24,11 +24,6 @@ class Usuario extends Authenticatable
         return $this->belongsTo(Perfil::class);
     }
 
-    public function vehiculos():BelongsToMany
-    {
-        return $this->belongsToMany(Vehiculo::class)->withPivot(['fehca_inicio','fecha_entrega','hora_entrega','imagen_entrega']);
-    }
-
     public function nombrePerfil():String
     {
         return $this->perfil->nombre;

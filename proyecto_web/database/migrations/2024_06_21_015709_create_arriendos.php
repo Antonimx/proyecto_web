@@ -21,9 +21,7 @@ return new class extends Migration
             $table->string('patente');
             $table->foreign('rut')->references('rut')->on('usuarios');
             $table->foreign('patente')->references('patente')->on('vehiculos');
-            
-            
-            
+         
             //$table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios_vehiculos');
+        Schema::dropIfExists('arriendos');
     }
 };
