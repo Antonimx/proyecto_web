@@ -40,6 +40,11 @@ class ArriendosController extends Controller
         $arriendo->rut = $request->rut;
         $arriendo->patente = $request->patente;
         $arriendo->save();
+
+        //cambiar el estado del vehiculo
+        $vehiculo = Vehiculo::where('patente',$request->patente)->get();
+        $vehiculo -> estado = 2;
+        $vehiculo->save();
         return redirect()->route('arriendos.index');
 
     }
