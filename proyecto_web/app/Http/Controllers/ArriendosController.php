@@ -15,8 +15,8 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        $arriendos = Arriendo::orderBy('fecha_inicio', 'desc')->get();
-        return view('arriendos.index',compact('arriendos'));
+        $vehiculos = Vehiculo::where('estado',1)->get();
+        return view('arriendos.index',compact('vehiculos'));
     }
 
     /**
@@ -44,6 +44,11 @@ class ArriendosController extends Controller
 
     }
 
+    public function gestionar()
+    {
+        $arriendos = Arriendo::where('fecha_entrega',null)->get();
+        return view('arriendos.gestioanr',compact('arriendos'));
+    }
     /**
      * Display the specified resource.
      */

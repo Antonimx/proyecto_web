@@ -1,4 +1,4 @@
-@extends('templates/master')
+@extends('templates.master')
 
 @section('contenido-pagina')
 <div class="row">
@@ -36,7 +36,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Arriendo</h5>
                   <p class="card-text">Gestione sus arriendos</p>
-                  <a href="#" class="btn btn-primary">Arrendar</a>
+                  <a href="{{route('arriendos.index')}}" class="btn btn-primary">Arrendar</a>
                 </div>
               </div>
         </div>

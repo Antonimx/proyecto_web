@@ -33,6 +33,7 @@ Route::resource('/perfiles',PerfilesController::class)->middleware('auth');
 
 //Arriendos
 Route::resource('/arriendos',ArriendosController::class)->middleware('auth');
+Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar')->middleware('auth');
 
 //Clientes
 Route::resource('/clientes',ClientesController::class)->middleware('auth');

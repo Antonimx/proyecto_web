@@ -1,68 +1,23 @@
-@section
+@extends('templates.master')
+@section('contenido-pagina')
+<div class="row mb-3">
+  <div class="col-lg-8"><h2 class="text-info"><b>Autos disponibles para arrendar</b></h2></div>
+  <div class="col-lg-4 d-flex justify-content-end"><a href="{{route('arriendos.gestionar')}}" class="btn text-white btn-info align-self-center" type='success'>Gestionar arriendos.</a></div>
+</div>
 <div class="row">
-    <!-- usuario -->
-    <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
+    @foreach($vehiculos as $vehiculo)
+    <div class="col">
         <div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card bg-white text-dark h-100 border-info" style="">
+                <img src="{{$vehiculo->imagen}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Barbie movil</h5>
-                  <p class="card-text">Para sentirte en Barbie Land</p>
-                  <a href="/arriendos/create" class="btn btn-primary">Arrendar</a>
+                  <h5 class="card-title">{{$vehiculo->nombre}}</h5>
+                  <p class="card-text">{{$vehiculo->descripcion}}</p>
+                  <a href="{{route('arriendos.create')}}" class="btn text-white btn-info" type='success'>Arrendar</a>
                 </div>
               </div>
         </div>
     </div>
-    <!-- cliente -->
-    <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
-        <div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Hatsune Miku movil</h5>
-                  <p class="card-text">Cuenta con un amplio repertorio de su musica para escuchar mientras viaja</p>
-                  <a href="/arriendos/create" class="btn btn-primary">Arrendar</a>
-                </div>
-              </div>
-        </div>
-    </div>
-    <!-- arriendo -->
-    <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
-        <div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Hello Kitty movil</h5>
-                  <p class="card-text">Incluye plushies para maxima comodidad</p>
-                  <a href="/arriendos/create" class="btn btn-primary">Arrendar</a>
-                </div>
-              </div>
-        </div>
-    </div>
-    <!-- vehiculo -->
-    <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
-        <div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">La maquina del misterio</h5>
-                  <p class="card-text">Hora de resolver misterios</p>
-                  <a href="/arriendos/create" class="btn btn-primary">Arrendar</a>
-                </div>
-              </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
-        <div>
-            <div class="card" style="width: 18rem;">
-                <class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Gestionar arriendos</h5>
-                  <p class="card-text">Revise y edite sus arriendos</p>
-                  <a href="/arriendos/create" class="btn btn-primary">Ir</a>
-                </div>
-              </div>
-        </div>
-    </div>
-@endsection
+    @endforeach
+  </div>
+  @endsection
