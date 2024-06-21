@@ -22,20 +22,38 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Cambiar contrasena</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="#">Cerrar sesion</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     {{-- / NAVBAR --}}
-
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Salir de la sesion</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Cambiar contrasena</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
     {{-- CONTENIDO PAGINA --}}
     <div class="w-100 my-3 bg-white rounded">
         <div class="p-3 pt-1">@yield('contenido-pagina')</div>  
