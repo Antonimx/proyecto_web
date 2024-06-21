@@ -35,7 +35,7 @@
     {{-- / NAVBAR --}}
 
     {{-- CONTENIDO PAGINA --}}
-    <div class="container p-3 bg-light rounded">
+    <div class="container p-2 bg-light rounded">
         @yield('contenido-pagina')
     </div>
     {{-- /CONTENIDO PAGINA --}}
