@@ -88,17 +88,18 @@ class UsuariosController extends Controller
      */
     public function edit($email)
     {
-        $usuario = Usuario::find($email);
+        dd($email);
         $perfiles = Perfil::all();
+        $usuario = Usuario::where('email',$email)->first(); 
+        dd($usuario);
         return view('usuarios.edit',compact('usuario','perfiles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UsuarioRequest $request, $email)
+    public function update(UsuarioRequest $request, Usuario $usuario)
     {
-        $usuario = Usuario::find($email);
 
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);

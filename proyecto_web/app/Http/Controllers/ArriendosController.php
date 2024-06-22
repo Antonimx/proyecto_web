@@ -18,7 +18,18 @@ class ArriendosController extends Controller
         $vehiculos = Vehiculo::where('estado',1)->get();
         return view('arriendos.index',compact('vehiculos'));
     }
-
+    
+    public function gestionar()
+    {
+        $arriendos = Arriendo::where('fecha_entrega',null)->get();
+        return view('arriendos.gestionar',compact('arriendos'));
+    }
+    
+    public function ver()
+    {
+        $arriendos = Arriendo::orderBy('fecha_inicio','desc')->get();
+        return view('arriendos.ver',compact('arriendos'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -49,11 +60,6 @@ class ArriendosController extends Controller
 
     }
 
-    public function gestionar()
-    {
-        $arriendos = Arriendo::where('fecha_entrega',null)->get();
-        return view('arriendos.gestioanr',compact('arriendos'));
-    }
     /**
      * Display the specified resource.
      */

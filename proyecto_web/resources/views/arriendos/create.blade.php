@@ -4,34 +4,35 @@
 
 {{-- CARD AUTO --}}
 <row>
-  <div class="card border-info mb-3 text-dark" style="">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{$vehiculo->imagen}}" class="img-fluid rounded-start" alt="...">
+  <div class="card border-info mb-3 text-dark">
+      <div class="row g-0">
+          <div class="col-md-4">
+              <div style="position: relative;">
+                  <img src="{{ asset($vehiculo->imagen) }}" class="img-fluid rounded-start w-100 h-100" style="object-fit: cover;" alt="...">
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+                  <h5 class="card-title m-0">{{ $vehiculo->nombre }}</h5>
+                  <hr class="bg-info border-info" style="height: 2px;">
+                  <p class="card-text">
+                      {{ $vehiculo->descripcion }}
+                      <ul>
+                          <li><b>Marca:</b> {{ $vehiculo->marca }}</li>
+                          <li><b>Modelo:</b> {{ $vehiculo->modelo }}</li>
+                          <li><b>Tipo:</b> {{ $vehiculo->tipo->nombre }}</li>
+                      </ul>
+                  </p>
+              </div>
+          </div>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{$vehiculo->nombre}}</h5>
-          <hr class="bg-info border-info" style="height: 2px;">
-          <p class="card-text">
-            {{$vehiculo->descripcion}}
-            <ul ">
-              <li><b ">Marca: </b>{{$vehiculo->marca}}</li>
-              <li><b ">Modelo: </b> {{$vehiculo->modelo}}</li>
-              <li><b ">Tipo: </b> {{$vehiculo->tipo->nombre}}</li>
-            </ul>
-          </p>
-
-        </div>
-      </div>
-    </div>
   </div>
 </row>
 {{-- /CARD AUTO --}}
 
 {{-- FORM PARA ARRENDAR --}}
 <row class="">
-  <form class="border border-info bg-white p-2 rounded" method="POST" action="{{route('arriendos.store')}}">
+  <form class="border border-info bg-white p-2 rounded text-dark" method="POST" action="{{route('arriendos.store')}}">
     @csrf
     <div class="input-group mb-3">
       <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownCliente">

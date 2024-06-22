@@ -1,15 +1,6 @@
-.card {
-    display: flex;
-    flex-direction: column;
+table.table thead.bg-dark {
+    background-color: #51c6e6; /* Cambiar el color de fondo */
+    color: white; /* Cambiar el color del texto */
 }
 
-.card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
 
-.card img {
-    height: 200px; /* Ajusta la altura de la imagen según tus necesidades */
-    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta para ajustarse */
-}

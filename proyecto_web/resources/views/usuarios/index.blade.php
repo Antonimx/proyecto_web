@@ -3,44 +3,53 @@
 @section('contenido-pagina')
 
 <div class="row">
-    <div class="col-9 text-body-secondary text-left">
-        <h3>Gestionar usuarios</h3>
+    <div class="col-lg-9">
+        <h3 class="text-info m-0">Gestionar usuarios</h3>
     </div>
-    <a class="col-2 btn btn-primary" href="{{route('usuarios.create')}}" role="button">Crear nuevo usuario</a>
+    <div class="col-lg-3 d-flex justify-content-end">
+      <a class="btn btn-info text-white d-flex align-items-center " href="{{route('usuarios.create')}}" role="button"><i class="material-icons">add</i>Crear nuevo usuario</a>
+    </div>
 </div>
+<hr class="bg-info border-info" style="height: 2px;">
 
 
-<hr>
-
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
+<div class="table-responsive">
+  <table class="table table-stripped table-bordered table-hover">
+      <thead class="table-dark">
+          <tr>
+              <th>Nº</th>
+              <th>Email</th>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach($usuarios as $index=>$usuario)
+          <tr>
+              <td class="small text-center">{{ $index+1 }}</td>
+              <td class="small">{{ $usuario->email }}</td>
+              <td class="small">{{ $usuario->nombre }}</td>
+              <td class="small">{{ $usuario->perfil->nombre }}</td>
+              <td class="small">{{ $usuario->activo?'Activo':'Baneado' }}</td>
+              <td class="text-center">
+                  @if($usuario->activo)
+                  <a href="#" class="btn btn-sm btn-danger pb-0">
+                      <i class="material-icons text-white" style="font-size: 1.1em">person_off</i>
+                  </a>
+                  @else
+                  <a href="#" class="btn btn-sm btn-info pb-0">
+                      <i class="material-icons text-white" style="font-size: 1.1em">person</i>
+                  </a>
+                  @endif
+                  <a href="{{route('usuarios.edit',$usuario)}}" class="btn btn-sm btn-info pb-0">
+                    <i class="material-icons text-white" style="font-size: 1.1em">mode_edit</i>
+                  </a>
+              </td>
+          </tr>
+          @endforeach
+      </tbody>
   </table>
 </div>
     

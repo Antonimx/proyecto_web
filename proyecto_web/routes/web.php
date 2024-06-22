@@ -16,7 +16,8 @@ Route::get('/',[HomeController::class,'index'])->name('home.index')->middleware(
 Route::middleware(['auth'])->group(function(){
     Route::get('/usuarios',[UsuariosController::class,'index'])->name('usuarios.index');
     Route::get('/usuarios/create',[UsuariosController::class,'create'])->name('usuarios.create');
-    Route::get('/usuarios/edit',[UsuariosController::class,'edit'])->name('usuarios.edit');
+    Route::get('/usuarios/update',[UsuariosController::class,'update'])->name('usuarios.update');
+    Route::get('/usuarios/{email}/edit',[UsuariosController::class,'edit'])->name('usuarios.edit');
     Route::get('/usuarios/logout',[UsuariosController::class,'logout'])->name('usuarios.logout');
 });
 Route::get('/usuarios/login',[UsuariosController::class,'login'])->name('usuarios.login');
@@ -35,6 +36,7 @@ Route::resource('/perfiles',PerfilesController::class)->middleware('auth');
 Route::middleware(['auth'])->group(function(){
     Route::resource('/arriendos',ArriendosController::class,['except'=>['create']]);
     Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar');
+    Route::get('/arriendos/ver',[ArriendosController::class,'ver'])->name('arriendos.ver');
     Route::get('/arriendos/create/{patente}',[ArriendosController::class,'create'])->name('arriendos.create');
 });
 

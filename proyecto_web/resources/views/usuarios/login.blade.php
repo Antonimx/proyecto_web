@@ -6,11 +6,11 @@
     <title>Sistema de Solicitudes</title>
     <link href="{{ asset('css/custom-bs.min.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #C0D4C6">
+<body class="bg-light">
     <div class="container vh-100 d-flex align-items-center">
         <div class="row w-100">
             <div class="offset-1 col-10 offset-md-3 col-md-6 d-flex justify-content-center">
-                <div class="card w-100">
+                <div class="card w-100 border-info text-dark">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Iniciar Sesión</h5>
                         <form method="POST" action="{{ route('usuarios.autenticar') }}">
@@ -29,7 +29,7 @@
 
                             {{-- botones --}}
                             <div class="mb-3 d-grid gap-2 d-md-block text-end">
-                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                                <button type="submit" class="btn btn-info text-white">Iniciar Sesión</button>
                             </div>
                         </form>
 
