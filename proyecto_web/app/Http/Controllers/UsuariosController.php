@@ -88,10 +88,9 @@ class UsuariosController extends Controller
      */
     public function edit($email)
     {
-        dd($email);
+
         $perfiles = Perfil::all();
         $usuario = Usuario::where('email',$email)->first(); 
-        dd($usuario);
         return view('usuarios.edit',compact('usuario','perfiles'));
     }
 

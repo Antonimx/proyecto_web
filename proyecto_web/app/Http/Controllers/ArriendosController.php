@@ -47,7 +47,10 @@ class ArriendosController extends Controller
     {
         $arriendo = new Arriendo();
         $arriendo->fecha_inicio = $request-> fecha_inicio;
-        $arriendo->imagen_inicio = $request->imagen_inicio;
+        $arriendo->imagen_inicio = $request-> imagen_inicio;
+        $arriendo->fecha_entrega = null;
+        $arriendo->hora_entrega = null;
+        $arriendo->imagen_entrega = null;
         $arriendo->rut = $request->rut;
         $arriendo->patente = $request->patente;
         $arriendo->save();
