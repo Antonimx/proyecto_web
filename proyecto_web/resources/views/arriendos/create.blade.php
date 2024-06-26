@@ -8,7 +8,7 @@
       <div class="row g-0">
           <div class="col-md-4">
               <div style="position: relative;">
-                  <img src="{{ asset($vehiculo->imagen) }}" class="img-fluid rounded-start w-100 h-100" style="object-fit: cover;" id="imagenCard">
+                  <img src="{{ Storage::url('public/'.$vehiculo->imagen) }}" class="img-fluid rounded-start w-100 h-100" style="object-fit: cover;" id="imagenCard">
               </div>
           </div>
           <div class="col-md-8">
@@ -76,9 +76,11 @@
   }
 
   document.getElementById('formArriendo').addEventListener('submit', function(event) {
-            const imagenSrc = document.getElementById('imagenCard').src;
-            document.getElementById('imagenInput').value = imagenSrc;
-        });
+    const imagenSrc = document.getElementById('imagenCard').src;
+    const relativePath = imagenSrc.replace(window.location.origin + '/', '');
+    document.getElementById('imagenInput').value = relativePath;
+  });
+
 </script>
 {{-- /FORMULARIO --}}
 @endsection

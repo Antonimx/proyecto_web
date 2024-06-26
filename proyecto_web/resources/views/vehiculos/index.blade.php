@@ -11,7 +11,7 @@
               <b>{{$vehiculo->patente}}</b>
             </div>
               <div style="position: relative;">
-                  <img src="{{ asset($vehiculo->imagen) }}" class="card-img-top w-100 h-100 rounded-0" style="object-fit: cover;" alt="...">
+                  <img src="{{ Storage::url('public/'.$vehiculo->imagen) }}" class="card-img-top w-100 h-100 rounded-0" style="object-fit: cover;" alt="...">
               </div>
               <div class="card-body">
                   <h4 class="card-title">{{ $vehiculo->nombre }}</h4>
@@ -32,6 +32,28 @@
                 </div>
               </div>
           </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="borrarModal{{$vehiculo->patente}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="borrarModal{{$vehiculo->patente}}Label">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="{{route('vehiculos.destroy')}}" method="POST">
+                @csrf
+                
+                
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
   @endforeach
 </div>

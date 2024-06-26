@@ -1,7 +1,7 @@
 @extends('templates.master')
 @section('contenido-pagina')
 <div class="row mb-3">
-  <div class="col-lg-6"><h2 class="text-info">Autos disponibles para arrendar</h2></div>
+  <div class="col-lg-6"><h2 class="text-info">Autos disponibles para arrendar 1</h2></div>
   <div class="col-lg-6 d-flex justify-content-end">
     <a href="{{route('arriendos.gestionar')}}" class="btn text-white btn-info align-self-center me-2" type='success'>Gestionar arriendos</a>
     <a href="{{route('arriendos.ver')}}" class="btn text-white btn-dark align-self-center" type='success'>Ver historial de arriendos</a>
@@ -18,7 +18,7 @@
               <b>{{$vehiculo->patente}}</b>
             </div>
               <div style="position: relative;">
-                  <img src="{{ asset($vehiculo->imagen) }}" class="card-img-top w-100 h-100 rounded-0" style="object-fit: cover;" alt="...">
+                  <img src="{{ Storage::url('public/'.$vehiculo->imagen) }}" class="card-img-top w-100 h-100 rounded-0" style="object-fit: cover;" alt="...">
               </div>
               <div class="card-body">
                   <h4 class="card-title">{{ $vehiculo->nombre }}</h4>

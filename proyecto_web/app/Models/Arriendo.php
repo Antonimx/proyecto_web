@@ -16,9 +16,6 @@ class Arriendo extends Model
     protected $fillable = [
         'fecha_inicio',
         'imagen_inicio',
-        'fecha_entrega',
-        'hora_entrega',
-        'imagen_entrega',
         'rut',
         'patente',
     ];

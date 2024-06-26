@@ -21,6 +21,7 @@ class ArriendosController extends Controller
     
     public function gestionar()
     {
+        dd('gestionar');
         $arriendos = Arriendo::where('fecha_entrega',null)->get();
         return view('arriendos.gestionar',compact('arriendos'));
     }
@@ -51,9 +52,6 @@ class ArriendosController extends Controller
             'imagen_inicio' => $request-> imagen_inicio,
             'rut' => $request-> rut,
             'patente' => $request-> patente,
-            'fecha_entrega' => null,
-            'hora_entrega' => null,
-            'imagen_entrega' => null,
         ]);
         $arriendo->save();
 
