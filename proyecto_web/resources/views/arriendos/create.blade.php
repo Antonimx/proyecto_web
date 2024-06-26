@@ -50,13 +50,13 @@
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="fecha" class="form-label text-dark">Fecha de arriendo</label>
-          <input type="date" id="fecha" name="fecha_incio" class="form-control">
+          <input type="date" id="fecha" name="fecha_inicio" class="form-control">
         </div>
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="patente" class="form-label">Patente</label>
-          <input type="text" class="form-control" id="patente" nombre="patente" value="{{$vehiculo->patente}}" readonly>
+          <input type="text" class="form-control" id="patente" name="patente" value="{{$vehiculo->patente}}" readonly>
         </div>
       </div>
     </div>

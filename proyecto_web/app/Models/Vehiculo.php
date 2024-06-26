@@ -16,6 +16,22 @@ class Vehiculo extends Model
     public $incrementing = false;
     public $timestamps = false;
 
+    protected $fillable = [
+        'patente',
+        'nombre',
+        'descripcion',
+        'marca',
+        'modelo',
+        'imagen',
+        'tipo_id',
+    ];
+
+    public function nombreEstado():String
+    {
+        $estados = ['De baja','Disponible','Arrendado','En mantenimiento'];
+        return $estados[$this->estado];
+    }
+    
     public function tipo():BelongsTo
     {
         return $this->belongsTo(Tipo::class);
@@ -25,4 +41,5 @@ class Vehiculo extends Model
     {
         return $this->hasMany(Arriendo::class);
     }
+
 }

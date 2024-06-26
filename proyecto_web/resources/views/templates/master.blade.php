@@ -48,7 +48,8 @@
                           Vehiculos
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item @if(Route::current()->getName() == 'tipos.index') active @endif" href="{{route('tipos.index')}}">Tipos de vehiculos</a></li>
+                          <li><a class="dropdown-item @if(Route::current()->getName() == 'vehiculos.index') active @endif" href="{{route('vehiculos.index')}}">Gestionar Vehículos</a></li>
+                          <li><a class="dropdown-item @if(Route::current()->getName() == 'tipos.index') active @endif" href="{{route('tipos.index')}}">Gesionar Tipos de vehiculos</a></li>
                       </ul>
                   </li>
                   <li class="nav-item dropdown">

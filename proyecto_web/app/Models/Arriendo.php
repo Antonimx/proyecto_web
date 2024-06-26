@@ -13,6 +13,16 @@ class Arriendo extends Model
     protected $table ='arriendos';
     public $timestamps = false;
 
+    protected $fillable = [
+        'fecha_inicio',
+        'imagen_inicio',
+        'fecha_entrega',
+        'hora_entrega',
+        'imagen_entrega',
+        'rut',
+        'patente',
+    ];
+    
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class);

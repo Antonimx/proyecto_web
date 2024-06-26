@@ -15,7 +15,7 @@ class VehiculosController extends Controller
      */
     public function index()
     {
-        $vehiculos = Vehiculo::orderBy('modelo')->get();
+        $vehiculos = Vehiculo::orderBy('nombre')->get();
         return view('vehiculos.index',compact('vehiculos'));
 
     }
@@ -36,10 +36,15 @@ class VehiculosController extends Controller
     public function store(VehiculoRequest $request)
     {
         $vehiculo = new Vehiculo();
-        $vehiculo->patente = $request->patente;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        $vehiculo->fill([
+            'patente' => $request->patente,
+            'nombre' => $request->nombre,
+            'descripcion' => $request->nombre,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'imagen' => $request->file('imagen')->store('public/vehiculos'),
+            'tipo_id' => $request->tipo_id,
+        ]);
         $vehiculo->save();
         return redirect()->route('vehiculos.index')->with('success','Datos guardados correctamente.');
 
@@ -69,10 +74,19 @@ class VehiculosController extends Controller
     public function update(VehiculoRequest $request, $patente)
     {
         $vehiculo = Vehiculo::find($patente);
-        $vehiculo->patente = $request->patente;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        $vehiculo->fill([
+            'patente' => $request->patente,
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'tipo_id' => $request->tipo_id,
+        ]);
+        
+        if ($request->hasFile('imagen')) {
+            $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+        }
+
         $vehiculo->save();
         return redirect()->route('vehiculos.index')->with('success','Datos actualizados correctamente.');
     }

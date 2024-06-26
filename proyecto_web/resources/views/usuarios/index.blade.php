@@ -2,15 +2,8 @@
 
 @section('contenido-pagina')
 
-<div class="row">
-    <div class="col-lg-9">
-        <h3 class="text-info m-0">Gestionar usuarios</h3>
-    </div>
-    <div class="col-lg-3 d-flex justify-content-end">
-      <a class="btn btn-info text-white d-flex align-items-center " href="{{route('usuarios.create')}}" role="button"><i class="material-icons">add</i>Crear nuevo usuario</a>
-    </div>
-</div>
-<hr class="bg-info border-info" style="height: 2px;">
+<x-titulo-gestion urlVolver="home.index" titulo="Gestión de usuarios" urlBoton="usuarios.create" textoBoton="Agregar nuevo usuario"/>
+
 
 
 <div class="table-responsive">
@@ -43,7 +36,7 @@
                       <i class="material-icons text-white" style="font-size: 1.1em">person</i>
                   </a>
                   @endif
-                  <a href="{{route('usuarios.edit',$usuario)}}" class="btn btn-sm btn-info pb-0">
+                  <a href="{{route('usuarios.edit',$usuario->email)}}" class="btn btn-sm btn-info pb-0">
                     <i class="material-icons text-white" style="font-size: 1.1em">mode_edit</i>
                   </a>
               </td>

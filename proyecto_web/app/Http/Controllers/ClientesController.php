@@ -31,9 +31,11 @@ class ClientesController extends Controller
     public function store(ClienteRequest $request)
     {
         $cliente = new Cliente();
-        $cliente->rut = $request->rut;
-        $cliente->nombre = $request->nombre;
-        $cliente->fono = $request->fono;
+        $cliente->fill([
+            'rut' => $request->rut,
+            'nombre' => $request->nombre,
+            'fono' => $request->fono,
+        ]);
         $cliente->save();
         return redirect()->route('clientes.index');
     }
@@ -49,9 +51,11 @@ class ClientesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit($rut)
     {
-        //
+        $cliente = Cliente::where('rut',$rut)->first(); 
+        return view('clientes.edit',compact('cliente'));
+
     }
 
     /**

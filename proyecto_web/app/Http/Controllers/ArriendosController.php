@@ -46,19 +46,20 @@ class ArriendosController extends Controller
     public function store(ArriendoRequest $request)
     {
         $arriendo = new Arriendo();
-        $arriendo->fecha_inicio = $request-> fecha_inicio;
-        $arriendo->imagen_inicio = $request-> imagen_inicio;
-        $arriendo->fecha_entrega = null;
-        $arriendo->hora_entrega = null;
-        $arriendo->imagen_entrega = null;
-        $arriendo->rut = $request->rut;
-        $arriendo->patente = $request->patente;
+        $arriendo->fill([
+            'fecha_inicio' => $request-> fecha_inicio,
+            'imagen_inicio' => $request-> imagen_inicio,
+            'rut' => $request-> rut,
+            'patente' => $request-> patente,
+            'fecha_entrega' => null,
+            'hora_entrega' => null,
+            'imagen_entrega' => null,
+        ]);
         $arriendo->save();
 
-        //cambiar el estado del vehiculo
-        $vehiculo = Vehiculo::where('patente',$request->patente)->get();
-        $vehiculo -> estado = 2;
-        $vehiculo->save();
+        //actualizar estado del vehiculo a arrendado (2)
+        Vehiculo::where('patente',$request->patente)->update(['estado'=>2]);
+
         return redirect()->route('arriendos.index');
 
     }

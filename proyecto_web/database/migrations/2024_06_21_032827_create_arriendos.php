@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_inicio');
             $table->string('imagen_inicio');
-            $table->date('fecha_entrega')->default(null);
-            $table->time('hora_entrega')->default(null);
-            $table->string('imagen_entrega')->default(null);
+            $table->date('fecha_entrega')->nullabe()->default(null);
+            $table->time('hora_entrega')->nullabe()->default(null);
+            $table->string('imagen_entrega')->nullabe()->default(null);
             $table->string('rut',15);
             $table->string('patente');
             $table->foreign('rut')->references('rut')->on('clientes');

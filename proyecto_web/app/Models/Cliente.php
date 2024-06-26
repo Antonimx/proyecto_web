@@ -14,6 +14,12 @@ class Cliente extends Model
     protected $primarykey = 'rut';
     public $incrementing = false;
     public $timestamps = false;
+    
+    protected $fillable = [
+        'rut',
+        'nombre',
+        'fono',
+    ];
 
     public function arriendos():HasMany
     {
