@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Arriendo;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,11 @@ class ClientesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cliente $cliente)
+    public function show($rut)
     {
-        //
+        $arriendos = Arriendo::where('rut',$rut)->get();
+        $cliente = Cliente::where('rut',$rut)->first();
+        return view('clientes.show',compact('arriendos','cliente'));
     }
 
     /**

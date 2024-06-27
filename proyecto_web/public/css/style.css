@@ -1,6 +1,8 @@
-table.table thead.bg-dark {
-    background-color: #51c6e6; /* Cambiar el color de fondo */
-    color: white; /* Cambiar el color del texto */
+.dropdown-menu .dropdown-item.active {
+    color: #ffffff; /* Color del texto activo */
+    background-color: #feb5ce; /* Color de fondo del elemento activo */
 }
-
+.thead .table-dark{
+    color: #ffffff;
+}
 

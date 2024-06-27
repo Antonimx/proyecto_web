@@ -12,8 +12,10 @@
         </div>
         
     </div>
+    @if($boton)
     <div class="col-lg-3 d-flex justify-content-end">
-      <a class="btn btn-info text-white d-flex align-items-center " href="{{route($urlBoton)}}" role="button">{{$textoBoton}}</a>
+        <a class="btn text-white btn-info align-self-center me-2" href="{{route($urlBoton)}}" role="button">{{$textoBoton}}</a>
     </div>
+    @endif
 </div>
 <hr class="bg-info border-info" style="height: 2px;">

@@ -36,13 +36,7 @@ Route::resource('/perfiles',PerfilesController::class)->middleware('auth');
 
 //Arriendos
 Route::middleware(['auth'])->group(function(){
-    // Route::get('/arriendos/gestionar', function () {
-    //     return 'Hello World';
-    // });
-
-    
     Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar');
-    Route::get('/arriendos/ver',[ArriendosController::class,'ver'])->name('arriendos.ver');
     Route::get('/arriendos/create/{patente}',[ArriendosController::class,'create'])->name('arriendos.create');
     Route::resource('/arriendos',ArriendosController::class,['except'=>['create']]);
     

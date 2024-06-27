@@ -29,47 +29,52 @@ El sistema permite gestionar las siguientes entidades:
 ## Paleta de colores
 
 ```scss
-$primary:   #13b7ce;
-$secondary: #b4daa5;
-$success:   #08d167;
-$info:      #e09137;
-$warning:   #f7d406;
-$danger:    #ff2c3c;
-$light:     #ffe0e9;
-$dark:      #76c7ba;
+$primary:       #3d4044;
+$secondary:     #b4daa5;
+$success:       #07a75b;
+$info:          #feb5ce;
+$warning:       #e6cb07;
+$danger:        #f60205;
+$light:         #d7e9ff;
+$dark:          #51c6e6;
 ```
 
 ## Vistas
+- Listas 5/20
+- Casi listas 6/20
 
-### Home (`home.index`)
+### Home (`home.index`) LISTO
 Página principal con cards para visualizar rápidamente usuarios, clientes, arriendos y vehículos.
 
-### Arriendos (`arriendos.index`)
+### Arriendos (`arriendos.index`) LISTO
 Página con cards de vehículos disponibles para arrendar, cada uno con un botón "Arrendar". Incluye un botón para gestionar arriendos.
 
-### Crear Arriendo (`arriendos.create`)
+### Crear Arriendo (`arriendos.create`) LISTO
 Página para crear un nuevo arriendo con información del vehículo y formulario para elegir cliente y fecha de arriendo.
 
-### Gestionar Arriendos (`arriendos.gestionar`)
+### Gestionar Arriendos (`arriendos.gestionar`) CASI LISTO 
 Página con lista de arriendos activos y botones para editar.
+- No se hace bien la relacion de arriendo con cliente y vehiculo.
 
-### Editar Arriendo (`arriendos.edit`)
+### Editar Arriendo (`arriendos.edit`) 
 Página para editar un arriendo existente, incluye formulario para agregar fecha de entrega, hora de entrega e imagen de entrega.
 
-### Clientes (`clientes.index`)
+### Clientes (`clientes.index`) CASI LISTO
 Lista de clientes con botones para eliminar, editar y ver arriendos. Incluye botón para agregar nuevo cliente.
-
+- Falta hacer el modal para eliminar cliente
+    
 ### Crear Cliente (`clientes.create`)
 Página con formulario para crear un nuevo cliente.
 
 ### Editar Cliente (`clientes.edit`)
 Página con formulario para editar información de un cliente.
 
-### Arriendos de Cliente (`clientes.arriendo`)
+### Arriendos de Cliente (`clientes.show`)
 Página con tabla de arriendos vigentes e históricos de un cliente específico.
 
-### Vehículos (`vehículos.index`)
+### Vehículos (`vehículos.index`) CASI LISTO
 Lista de vehículos con cards individuales que tienen botones para eliminar y editar. Incluye botón para ver tipos de vehículos.
+- La función de destroy está buscando por id en vez de patente.
 
 ### Crear Vehículo (`vehículos.create`)
 Página con formulario para crear un nuevo vehículo.
@@ -77,8 +82,9 @@ Página con formulario para crear un nuevo vehículo.
 ### Editar Vehículo (`vehículos.edit`)
 Página con formulario para editar información de un vehículo existente.
 
-### Tipos de Vehículo (`tipos.index`)
+### Tipos de Vehículo (`tipos.index`) CASI LISTO
 Página con tabla de todos los tipos de vehículos, incluye botones para editar y eliminar.
+- Falta el modal para eliminar.
 
 ### Editar Tipo de Vehículo (`tipos.edit`)
 Página con formulario para editar un tipo de vehículo.
@@ -86,8 +92,9 @@ Página con formulario para editar un tipo de vehículo.
 ### Crear Tipo de Vehículo (`tipos.create`)
 Página con formulario para crear un nuevo tipo de vehículo.
 
-### Usuarios (`usuarios.index`)
+### Usuarios (`usuarios.index`) CASI LISTO
 Tabla con todos los usuarios, incluye botones para eliminar y editar.
+- Falta el modal para eliminar.
 
 ### Editar Usuario (`usuarios.edit`)
 Página con formulario para editar información de un usuario, incluyendo cambio de contraseña.
@@ -95,7 +102,7 @@ Página con formulario para editar información de un usuario, incluyendo cambio
 ### Crear Usuario (`usuarios.create`)
 Página con formulario para crear un nuevo usuario.
 
-### Login de Usuarios (`usuarios.login`)
+### Login de Usuarios (`usuarios.login`) LISTO
 Página con formulario de login para acceder al sistema.
 
 

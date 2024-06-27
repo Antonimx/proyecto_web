@@ -21,16 +21,11 @@ class ArriendosController extends Controller
     
     public function gestionar()
     {
-        dd('gestionar');
-        $arriendos = Arriendo::where('fecha_entrega',null)->get();
-        return view('arriendos.gestionar',compact('arriendos'));
+        $arriendosVigentes = Arriendo::whereNull('fecha_entrega')->get();
+        $arriendosFinalizados = Arriendo::whereNotNull('fecha_entrega')->get();
+        return view('arriendos.gestionar',compact('arriendosVigentes','arriendosFinalizados'));
     }
     
-    public function ver()
-    {
-        $arriendos = Arriendo::orderBy('fecha_inicio','desc')->get();
-        return view('arriendos.ver',compact('arriendos'));
-    }
     /**
      * Show the form for creating a new resource.
      */

@@ -15,7 +15,7 @@ class VehiculosController extends Controller
      */
     public function index()
     {
-        $vehiculos = Vehiculo::orderBy('nombre')->get();
+        $vehiculos = Vehiculo::all();
         return view('vehiculos.index',compact('vehiculos'));
 
     }

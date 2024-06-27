@@ -2,8 +2,7 @@
 
 @section('contenido-pagina')
 
-<x-titulo-gestion urlVolver="home.index" titulo="Gestión de clientes" urlBoton="clientes.create" textoBoton="Agregar nuevo cliente"/>
-
+<x-titulo-gestion :urlVolver="'home.index'" :titulo="'Gestión de clientes'" :boton="true" :urlBoton="'clientes.create'" :textoBoton="'Agregar nuevo cliente'"/>
 
 
 <div class="table-responsive">
@@ -29,8 +28,11 @@
                   <a href="#" class="btn btn-sm btn-danger pb-0">
                       <i class="material-icons text-white" style="font-size: 1.1em">person_off</i>
                   </a>
-                  <a href="{{route('clientes.edit',$cliente->rut)}}" class="btn btn-sm btn-info pb-0">
+                  <a href="{{route('clientes.edit',$cliente->rut)}}" class="btn btn-sm btn-secondary pb-0">
                     <i class="material-icons text-white" style="font-size: 1.1em">mode_edit</i>
+                  </a>
+                  <a href="{{route('clientes.show',$cliente->rut)}}" class="btn btn-sm btn-info pb-0">
+                    <i class="material-icons text-white" style="font-size: 1.1em">manage_search</i>
                   </a>
               </td>
           </tr>

@@ -13,6 +13,7 @@ class Vehiculo extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'vehiculos';
     protected $primarykey = 'patente';
+    protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
 

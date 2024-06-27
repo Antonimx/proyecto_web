@@ -11,7 +11,14 @@ class tituloGestion extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $urlVolver,public string $titulo,public string $urlBoton,public string $textoBoton)
+    public function __construct(
+        public string $urlVolver,
+        public string $titulo,
+        public string $urlBoton,
+        public string $textoBoton, 
+        public string $boton,
+
+        )
     {
         //
     }

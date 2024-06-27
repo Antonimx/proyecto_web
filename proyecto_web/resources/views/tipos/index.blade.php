@@ -2,8 +2,7 @@
 
 @section('contenido-pagina')
 
-<x-titulo-gestion urlVolver="vehiculos.index" titulo="Gestión de tipos de vehículos" urlBoton="tipos.create" textoBoton="Agregar tipo de vehículo"/>
-
+<x-titulo-gestion :urlVolver="'vehiculos.index'" :titulo="'Gestión de tipos vehículos'" :boton="true" :urlBoton="'tipos.create'" :textoBoton="'Agregar tipo'"/>
 <div class="table-responsive">
     <table class="table table-stripped table-bordered table-hover">
         <thead class="table-dark">
@@ -25,7 +24,7 @@
                     <a href="#" class="btn btn-sm btn-danger pb-0">
                         <i class="material-icons text-white" style="font-size: 1.1em">delete</i>
                     </a>
-                    <a href="{{route('tipos.edit',$tipo)}}" class="btn btn-sm btn-info pb-0">
+                    <a href="{{route('tipos.edit',$tipo)}}" class="btn btn-sm btn-secondary pb-0">
                       <i class="material-icons text-white" style="font-size: 1.1em">mode_edit</i>
                     </a>
                 </td>

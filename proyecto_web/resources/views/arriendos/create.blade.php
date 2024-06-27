@@ -70,6 +70,7 @@
     </div>
   </form>
 </row>
+
 <script>
   function selectCliente(cliente) {
     document.getElementById('clienteSeleccionado').value = cliente;

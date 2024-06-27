@@ -2,7 +2,7 @@
 
 @section('contenido-pagina')
 
-<x-titulo-gestion urlVolver="home.index" titulo="Gestión de usuarios" urlBoton="usuarios.create" textoBoton="Agregar nuevo usuario"/>
+<x-titulo-gestion :urlVolver="'home.index'" :titulo="'Gestión de usuarios'" :boton="true" :urlBoton="'usuarios.create'" :textoBoton="'Agregar nuevo usuario'"/>
 
 
 
@@ -36,7 +36,7 @@
                       <i class="material-icons text-white" style="font-size: 1.1em">person</i>
                   </a>
                   @endif
-                  <a href="{{route('usuarios.edit',$usuario->email)}}" class="btn btn-sm btn-info pb-0">
+                  <a href="{{route('usuarios.edit',$usuario->email)}}" class="btn btn-sm btn-secondary pb-0">
                     <i class="material-icons text-white" style="font-size: 1.1em">mode_edit</i>
                   </a>
               </td>
