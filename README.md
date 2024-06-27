@@ -11,6 +11,12 @@ Los vehículos tienen un estado que puede ser seleccionado mediante un ComboBox 
 - **1: Disponible**
 - **2: Arrendado**
 - **3: En mantenimiento**
+### Tipos de Vehículos
+Por defecto existen los siguientes tipos de vehículos
+- **1: Auto**
+- **2: Moto**
+- **3: Van**
+- **4: Camioneta**
 
 ### Usuarios (Perfil)
 Los usuarios tienen un perfil que se selecciona desde un ComboBox o RadioButtons:
@@ -25,6 +31,18 @@ El sistema permite gestionar las siguientes entidades:
 2. Tipos de Vehículos
 3. Vehículos
 4. Clientes
+
+## Paleta de colores
+
+$primary:   #13b7ce;
+$secondary: #b4daa5;
+$success:   #08d167;
+$info:      #e09137;
+$warning:   #f7d406;
+$danger:    #ff2c3c;
+$light:     #ffe0e9;
+$dark:      #76c7ba;
+
 ## Vistas
 
 ### Home (`home.index`)
