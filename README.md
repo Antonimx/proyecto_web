@@ -25,6 +25,20 @@ El sistema permite gestionar las siguientes entidades:
 2. Tipos de Vehículos
 3. Vehículos
 4. Clientes
+
+## Paleta de colores
+
+```scss
+$primary:   #13b7ce;
+$secondary: #b4daa5;
+$success:   #08d167;
+$info:      #e09137;
+$warning:   #f7d406;
+$danger:    #ff2c3c;
+$light:     #ffe0e9;
+$dark:      #76c7ba;
+```
+
 ## Vistas
 
 ### Home (`home.index`)
