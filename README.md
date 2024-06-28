@@ -28,6 +28,7 @@ El sistema permite gestionar las siguientes entidades:
 
 ## Anotaciones
 - Un administrador no puede eliminar su propia cuenta.
+- El ejecutivo NO PUEDE gestionar usuarios, gestionar tipos de vehiculos, gestionar vehiculos (excepto cambiar el estado de un vehiculo).
 - Falta agregar campo de hora de inicio de las migraciones y editar sus respectivas tablas.
 
 ## Vistas
@@ -50,7 +51,6 @@ Lista de clientes con botones para eliminar, editar y ver arriendos. Incluye bot
 - Falta modal para editar cliente
 - Añadir a la tabla un campo para contar cuantos arriendos tiene el cliente?
 
-
 ### Arriendos de Cliente (`clientes.show`) LISTO
 Página con tabla de arriendos vigentes e históricos de un cliente específico.
 
@@ -70,7 +70,7 @@ Página con tabla de todos los tipos de vehículos, incluye botones para editar 
 ### Usuarios (`usuarios.index`)
 Tabla con todos los usuarios.
 - Falta el modal para eliminar.
-- Falta el modal para editar: Se refiere a gestión de usuarios, ¿se puede editar la contraseña y email de otros usuarios?
+- Falta el modal para editar. ¿se puede editar la contraseña y email de otros usuarios?
 - Falta formulario para agregar un nuevo Usuario
 
 ### Configuracion de cuenta (`usuarios.me`)
