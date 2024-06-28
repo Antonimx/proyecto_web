@@ -12,8 +12,8 @@ class Vehiculo extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'vehiculos';
-    protected $primarykey = 'patente';
     protected $keyType = 'string';
+    protected $primaryKey = 'patente';
     public $incrementing = false;
     public $timestamps = false;
 

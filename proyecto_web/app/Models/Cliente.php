@@ -11,7 +11,8 @@ class Cliente extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'clientes';
-    protected $primarykey = 'rut';
+    protected $primaryKey = 'rut';
+    protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
     

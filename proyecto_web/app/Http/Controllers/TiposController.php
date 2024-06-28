@@ -56,9 +56,14 @@ class TiposController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tipo $tipo)
+    public function update(Request $request, $id)
     {
-        //
+        $tipo = Tipo::find($id);
+        $tipo->nombre = $request->nombre;
+        $tipo->valor = $request->valor;
+        $tipo->save();
+        return redirect()->route('tipos.index');
+
     }
 
     /**

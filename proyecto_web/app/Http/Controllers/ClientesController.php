@@ -46,9 +46,10 @@ class ClientesController extends Controller
      */
     public function show($rut)
     {
-        $arriendos = Arriendo::where('rut',$rut)->get();
-        $cliente = Cliente::where('rut',$rut)->first();
-        return view('clientes.show',compact('arriendos','cliente'));
+        $cliente = Cliente::find($rut);
+        $arriendosVigentes = Arriendo::where('rut',$rut)->whereNull('fecha_entrega')->get();
+        $arriendosFinalizados = Arriendo::where('rut',$rut)->whereNotNull('fecha_entrega')->get();
+        return view('clientes.show',compact('arriendosVigentes','arriendosFinalizados','cliente'));
     }
 
     /**

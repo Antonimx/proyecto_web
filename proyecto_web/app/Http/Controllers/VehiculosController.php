@@ -25,8 +25,9 @@ class VehiculosController extends Controller
      */
     public function create()
     {
+        $vehiculos = Vehiculo::all();
         $tipos = Tipo::all();
-        return view('vehiculos.create',compact('vehiculos'));
+        return view('vehiculos.create',compact('vehiculos','tipos'));
 
     }
 
@@ -39,10 +40,10 @@ class VehiculosController extends Controller
         $vehiculo->fill([
             'patente' => $request->patente,
             'nombre' => $request->nombre,
-            'descripcion' => $request->nombre,
+            'descripcion' => $request->descripcion,
             'marca' => $request->marca,
             'modelo' => $request->modelo,
-            'imagen' => $request->file('imagen')->store('public/vehiculos'),
+            'imagen' => $request->file('imagen')->store('public/imgs/vehiculos'),
             'tipo_id' => $request->tipo_id,
         ]);
         $vehiculo->save();
@@ -74,17 +75,12 @@ class VehiculosController extends Controller
     public function update(VehiculoRequest $request, $patente)
     {
         $vehiculo = Vehiculo::find($patente);
-        $vehiculo->fill([
-            'patente' => $request->patente,
-            'nombre' => $request->nombre,
-            'descripcion' => $request->descripcion,
-            'marca' => $request->marca,
-            'modelo' => $request->modelo,
-            'tipo_id' => $request->tipo_id,
-        ]);
-        
+        $vehiculo->nombre = $request->nombre;
+        $vehiculo->descripcion = $request->descripcion;
+        $vehiculo->marca = $request->marca;
+        $vehiculo->modelo = $request->modelo;
         if ($request->hasFile('imagen')) {
-            $vehiculo->imagen = $request->file('imagen')->store('public/vehiculos');
+            $vehiculo->imagen = $request->file('imagen')->store('public/imgs/vehiculos');
         }
 
         $vehiculo->save();

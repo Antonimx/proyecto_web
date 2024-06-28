@@ -20,13 +20,14 @@ class Arriendo extends Model
         'patente',
     ];
     
+    // CUANDO NO SE USA ID COMO PK, SE TIENE QUE ESPECIFICAR LA PK Y FK AL HACER RELACION
     public function cliente(): BelongsTo
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class,'rut', 'rut');
     }
     
     public function vehiculo(): BelongsTo
     {
-        return $this->belongsTo(Vehiculo::class);
+        return $this->belongsTo(Vehiculo::class,'patente', 'patente');
     }
 }

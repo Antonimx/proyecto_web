@@ -2,7 +2,7 @@
 
 @section('contenido-pagina')
 
-<x-titulo-gestion :urlVolver="'home.index'" :titulo="'Gestión de usuarios'" :boton="true" :urlBoton="'usuarios.create'" :textoBoton="'Agregar nuevo usuario'"/>
+<x-titulo-gestion :urlVolver="'home.index'" :titulo="'Gestión de usuarios'" :boton="false" :urlBoton="'usuarios.create'" :textoBoton="'Agregar nuevo usuario'"/>
 
 
 

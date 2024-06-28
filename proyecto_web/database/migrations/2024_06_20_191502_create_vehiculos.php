@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->string('patente')->primary();
             $table->string('nombre');
-            $table->string('descripcion',250);
+            $table->string('descripcion',300);
             $table->string('marca');
             $table->string('modelo');
             $table->unsignedTinyInteger('estado')->default(1);

@@ -68,7 +68,7 @@ class ArriendosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Arriendo $arriendo)
+    public function edit($id)
     {
         //
     }
@@ -76,9 +76,23 @@ class ArriendosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Arriendo $arriendo)
+    public function update(ArriendoRequest $request, $id)
     {
-        //
+        $arriendo = Arriendo::find($id);
+        
+        if ($request->hasFile('imagen_entrega')) {
+            $arriendo->imagen_entrega = $request->file('imagen_entrega')->store('public/imgs/vehiculos_entrega');
+        }
+
+        $arriendo->fecha_entrega = $request->fecha_entrega;
+        $arriendo->hora_entrega = $request->hora_entrega;
+        $arriendo->save();
+        
+        // updatear el vehiculo a disponible (1)
+        Vehiculo::where('patente',$arriendo->patente)->update(['estado'=>1]);
+
+        return redirect()->route('arriendos.gestionar');
+        //->with('success','Entrega añaddida correctamente.');
     }
 
     /**

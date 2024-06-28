@@ -1,7 +1,25 @@
 @extends('templates.master')
 @section('contenido-pagina')
-<x-titulo-gestion :urlVolver="'home.index'" :titulo="'Gestión de vehículos'" :boton="true" :urlBoton="'tipos.index'" :textoBoton="'Tipos de vehículos'"/>
-
+<div class="row">
+  <div class="col-lg-7">
+      <div class="row d-flex justify-content-start">
+          <div class="col-lg-1 pe-0 ">
+              <a href="{{ route('home.index') }}" class="btn btn-outline-dark btn-sm pb-0" data-bs-toggle="tooltip" data-bs-title="Volver">
+                  <span class="material-icons">arrow_back</span>
+              </a>
+          </div>
+          <div class="col-lg-11 ps-0">
+              <h3 class="text-info ms-2">Gestión de vehículos.</h3>
+          </div>
+      </div>
+      
+  </div>
+  <div class="col-lg-5 d-flex justify-content-end">
+    <a href="{{route('tipos.index')}}" class="btn text-white btn-info align-self-center me-2" type='success'>Tipos de vehículos</a>
+    <a href="{{route('vehiculos.create')}}" class="btn text-white btn-secondary align-self-center" type='success'>Agregar nuevo vehículo</a>
+  </div>
+</div>
+<hr class="bg-info border-info" style="height: 2px;">
 
 <div class="row">
   @foreach($vehiculos as $vehiculo)
@@ -24,10 +42,10 @@
                 </div>
                 <div>
                   <a href="{{ route('vehiculos.edit', $vehiculo->patente) }}" class="btn btn-secondary text-white btn-sm "><i class="material-icons text-white">mode_edit</i></a>  
-                  <span data-bs-toggle="tooltip" data-bs-title="Borrar Charla">
+                  <span data-bs-toggle="tooltip" data-bs-title="Borrar Vehiculo">
                     <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#borrarModal{{$vehiculo->patente}}">
                           <span class="material-icons text-white">delete</span>
-                      </a>
+                    </a>
                   </span>   
                 </div>
               </div>
