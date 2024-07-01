@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 
 class Arriendo extends Model
@@ -15,6 +16,7 @@ class Arriendo extends Model
 
     protected $fillable = [
         'fecha_inicio',
+        'hora_inicio',
         'imagen_inicio',
         'rut',
         'patente',
@@ -29,5 +31,17 @@ class Arriendo extends Model
     public function vehiculo(): BelongsTo
     {
         return $this->belongsTo(Vehiculo::class,'patente', 'patente');
+    }
+    
+    // Mutador para campo 'hora_entrega'
+    public function getHoraEntregaAttribute($value)
+    {
+        return Carbon::createFromFormat('H:i:s', $value);
+    }
+
+    // Mutador para campo 'hora_inicio'
+    public function getHoraInicioAttribute($value)
+    {
+        return Carbon::createFromFormat('H:i:s', $value);
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\TipoRequest;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class TiposController extends Controller
 {
@@ -13,6 +14,10 @@ class TiposController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('admin-gestion'))
+        {
+            return redirect()->route('home.index');
+        }
         $tipos = Tipo::orderBy('nombre')->get();
         return view('tipos.index',compact('tipos'));
     }
@@ -22,7 +27,7 @@ class TiposController extends Controller
      */
     public function create()
     {
-        return view('tipos.create');
+        //
     }
 
     /**

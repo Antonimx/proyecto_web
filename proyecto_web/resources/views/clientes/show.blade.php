@@ -20,7 +20,7 @@
                                 <th>Patente</th>
                                 <th>Nombre</th>
                                 <th>Valor</th>
-                                <th>Fecha de inicio</th>
+                                <th colspan="2">Fecha y hora de inicio</th>
                                 <th>Imagen</th>
                             </tr>
                         </thead>
@@ -32,6 +32,7 @@
                                 <td class="small">{{ $arriendo->vehiculo->nombre }}</td>
                                 <td class="small">$ {{ number_format($arriendo->vehiculo->tipo->valor, 0, ',', '.') }}</td>
                                 <td class="small">{{ $arriendo->fecha_inicio }}</td>
+                                <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
                                 <td class="small text-center"><a href="http://localhost:8000/{{$arriendo->imagen_inicio}}" target="_blank" class="btn btn-sm bg-info pb-0">
                                     <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                 </a>
@@ -65,7 +66,7 @@
                                 <th>Nombre</th>
                                 <th>Valor</th>
                                 <th>Imagen</th>
-                                <th>Inicio</th>
+                                <th colspan="2">Fecha y hora de inicio</th>
                                 <th class="text-center" colspan="3">Datos de entrega</th>
                             </tr>
                         </thead>
@@ -82,8 +83,9 @@
                                     </td>
 
                                     <td class="small">{{ $arriendo->fecha_inicio }}</td>
+                                    <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
                                     <td class="small">{{ $arriendo->fecha_entrega }}</td>
-                                    <td class="small">{{ $arriendo->hora_entrega }}</td>
+                                    <td class="small">{{ $arriendo->hora_entrega->format('H:i') }}</td>
                                     <td class="small text-center"><a href="http://localhost:8000/{{$arriendo->imagen_entrega}}" target="_blank" class="btn btn-sm btn-info pb-0">
                                         <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                     </a>

@@ -47,10 +47,16 @@
       <input type="text" class="form-control" aria-label="Text input with dropdown button" id="clienteSeleccionado" name="rut">
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-3">
         <div class="mb-3">
           <label for="fecha" class="form-label text-dark">Fecha de arriendo</label>
           <input type="date" id="fecha" name="fecha_inicio" class="form-control">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="mb-3">
+          <label for="hora" class="form-label text-dark">Hora</label>
+          <input type="time" id="hora" name="hora_inicio" class="form-control">
         </div>
       </div>
       <div class="col-lg-6">

@@ -16,16 +16,16 @@ Route::get('/',[HomeController::class,'index'])->name('home.index')->middleware(
 
 //Usuarios
 Route::middleware(['auth'])->group(function(){
-    Route::get('/usuarios',[UsuariosController::class,'index'])->name('usuarios.index');
-    Route::get('/usuarios/create',[UsuariosController::class,'create'])->name('usuarios.create');
-    Route::get('/usuarios/update',[UsuariosController::class,'update'])->name('usuarios.update');
-    Route::get('/usuarios/{email}/edit',[UsuariosController::class,'edit'])->name('usuarios.edit');
+    Route::put('/usuarios/{email}/desban', [UsuariosController::class, 'desban'])->name('usuarios.desban');
+    Route::put('/usuarios/{email}/update-me', [UsuariosController::class, 'updateMe'])->name('usuarios.updateMe');
     Route::get('/usuarios/logout',[UsuariosController::class,'logout'])->name('usuarios.logout');
 });
 Route::get('/usuarios/login',[UsuariosController::class,'login'])->name('usuarios.login');
 Route::post('/usuarios/autenticar',[UsuariosController::class,'autenticar'])->name('usuarios.autenticar');
+Route::resource('/usuarios',UsuariosController::class)->middleware('auth');
 
 //Vehiculos
+Route::put('/vehiculos/{patente}', [VehiculosController::class, 'updateEstado'])->name('vehiculos.updateEstado');
 Route::resource('/vehiculos',VehiculosController::class)->middleware('auth');
 
 //Tipos
@@ -38,9 +38,7 @@ Route::resource('/perfiles',PerfilesController::class)->middleware('auth');
 Route::middleware(['auth'])->group(function(){
     Route::get('/arriendos/gestionar',[ArriendosController::class,'gestionar'])->name('arriendos.gestionar');
     Route::get('/arriendos/create/{patente}',[ArriendosController::class,'create'])->name('arriendos.create');
-    Route::resource('/arriendos',ArriendosController::class,['except'=>['create']]);
-    
-    
+    Route::resource('/arriendos',ArriendosController::class,['except'=>['create']]);   
 });
 
 //Clientes

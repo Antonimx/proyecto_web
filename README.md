@@ -29,10 +29,15 @@ El sistema permite gestionar las siguientes entidades:
 ## Anotaciones
 - Un administrador no puede eliminar su propia cuenta.
 - El ejecutivo NO PUEDE gestionar usuarios, gestionar tipos de vehiculos, gestionar vehiculos (excepto cambiar el estado de un vehiculo).
-- Falta agregar campo de hora de inicio de las migraciones y editar sus respectivas tablas.
+- ~~Falta agregar campo de hora de inicio de las migraciones y editar sus respectivas tablas.~~
+- ~~El update de usuarios no funciona.~~
+- Falta editar portada y el navbar según nivel de acceso.
+- Falta validar los request.
+- Ponerle más cosas a la portada?
+- Preguntar sobre cómo funciona el tema de los valores de los arriendos.
 
 ## Vistas
-- Listas 8/12
+- Listas 13/13
 
 ### Home (`home.index`) LISTO
 Página principal con cards para visualizar rápidamente usuarios, clientes, arriendos y vehículos.
@@ -46,9 +51,8 @@ Página para crear un nuevo arriendo con información del vehículo y formulario
 ### Gestionar Arriendos (`arriendos.gestionar`) LISTO
 Página con lista de arriendos activos y botones para editar.
 
-### Clientes (`clientes.index`) 
+### Clientes (`clientes.index`) LISTO
 Lista de clientes con botones para eliminar, editar y ver arriendos. Incluye botón para agregar nuevo cliente.    
-- Falta modal para editar cliente
 - Añadir a la tabla un campo para contar cuantos arriendos tiene el cliente?
 
 ### Arriendos de Cliente (`clientes.show`) LISTO
@@ -60,22 +64,17 @@ Lista de vehículos con cards individuales que tienen botones para eliminar y ed
 ### Crear Vehículo (`vehículos.create`) LISTO
 Página con formulario para crear un nuevo vehículo.
 
-### Editar Vehículo (`vehículos.edit`) 
+### Editar Vehículo (`vehículos.edit`) LISTO
 Página con formulario para editar información de un vehículo existente.
-- Falta agregar al form el cambiar un estado del vehiculo.
 
 ### Tipos de Vehículo (`tipos.index`) LISTO
 Página con tabla de todos los tipos de vehículos, incluye botones para editar y eliminar.
 
-### Usuarios (`usuarios.index`)
-Tabla con todos los usuarios.
-- Falta el modal para eliminar.
-- Falta el modal para editar. ¿se puede editar la contraseña y email de otros usuarios?
-- Falta formulario para agregar un nuevo Usuario
+### Usuarios (`usuarios.index`) LISTO
+Página para gestionar usuarios.
 
-### Configuracion de cuenta (`usuarios.me`)
+### Configuracion de cuenta (`usuarios.edit`) LISTO
 Debe permitir cambiar propios datos de usuario, incluido contraseña
-- No se ha empezado
 
 ### Login de Usuarios (`usuarios.login`) LISTO
 Página con formulario de login para acceder al sistema.

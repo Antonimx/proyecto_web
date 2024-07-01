@@ -6,6 +6,7 @@ use App\Http\Requests\ArriendoRequest;
 use App\Models\Arriendo;
 use App\Models\Cliente;
 use App\Models\Vehiculo;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 
 class ArriendosController extends Controller
@@ -16,6 +17,7 @@ class ArriendosController extends Controller
     public function index()
     {
         $vehiculos = Vehiculo::where('estado',1)->get();
+
         return view('arriendos.index',compact('vehiculos'));
     }
     
@@ -23,7 +25,9 @@ class ArriendosController extends Controller
     {
         $arriendosVigentes = Arriendo::whereNull('fecha_entrega')->get();
         $arriendosFinalizados = Arriendo::whereNotNull('fecha_entrega')->get();
-        return view('arriendos.gestionar',compact('arriendosVigentes','arriendosFinalizados'));
+        $fecha_hoy = Carbon::now()->toDateString(); // Obtiene la fecha actual en formato 'Y-m-d'
+
+        return view('arriendos.gestionar',compact('arriendosVigentes','arriendosFinalizados','fecha_hoy'));
     }
     
     /**
@@ -44,6 +48,7 @@ class ArriendosController extends Controller
         $arriendo = new Arriendo();
         $arriendo->fill([
             'fecha_inicio' => $request-> fecha_inicio,
+            'hora_inicio' => $request-> hora_inicio,
             'imagen_inicio' => $request-> imagen_inicio,
             'rut' => $request-> rut,
             'patente' => $request-> patente,

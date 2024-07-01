@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Arriendo;
 use App\Http\Requests\ClienteRequest;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
@@ -65,9 +66,13 @@ class ClientesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteRequest $request, $rut)
     {
-        //
+        $cliente = Cliente::find($rut);
+        $cliente->nombre = $request->nombre;
+        $cliente->fono = $request->fono;
+        $cliente->save();
+        return redirect()->route('clientes.index');
     }
 
     /**

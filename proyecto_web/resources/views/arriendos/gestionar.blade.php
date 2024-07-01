@@ -18,7 +18,7 @@
                                 <tr>
                                     <th class="text-center" colspan="4">Cliente</th>
                                     <th class="text-center" colspan="4">Vehículo</th>
-                                    <th class="text-center" colspan="2">Arriendo</th>
+                                    <th class="text-center" colspan="3">Arriendo</th>
                                 </tr>
                                 <th>Nº</th>
                                 <th>Rut</th>
@@ -30,7 +30,7 @@
                                 <th>Valor</th>
                                 <th>Imagen</th>
                                 
-                                <th>Fecha de inicio</th>
+                                <th colspan="2">Fecha y hora de inicio</th>
                                 <th>Agregar entrega</th>
                             </tr>
                         </thead>
@@ -51,6 +51,7 @@
                                 </td>
 
                                 <td class="small">{{ $arriendo->fecha_inicio }}</td>
+                                <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
                                 <td class="small text-center">
                                     <button type="button" class="btn btn-sm btn-secondary pb-0" data-bs-toggle="modal" data-bs-target="#entregaModal{{$arriendo->id}}">
                                         <i class="material-icons text-white" style="font-size: 1.1em">add</i>
@@ -71,15 +72,15 @@
                                             @method('PUT')
                                             <div class="mb-3">
                                                 <label for="fecha" class="form-label text-dark">Fecha de entrega</label>
-                                                <input type="date" id="fecha" name="fecha_entrega" min="{{ $arriendo->fecha_inicio }}" class="form-control">
+                                                <input type="date" id="fecha" name="fecha_entrega" min="{{ $arriendo->fecha_inicio }}" class="form-control" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hora" class="form-label text-dark">Hora de entrega</label>
-                                                <input type="time" id="hora" name="hora_entrega" class="form-control">
+                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio)min="{{ $arriendo->hora_inicio }}"@endif class="form-control" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="imagen" class="form-label text-dark">Imagen de entrega</label>
-                                                <input type="file" id="imagen" name="imagen_entrega" class="form-control">
+                                                <input type="file" id="imagen" name="imagen_entrega" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -116,7 +117,7 @@
                                 <tr>
                                     <th class="text-center" colspan="4">Cliente</th>
                                     <th class="text-center" colspan="4">Vehículo</th>
-                                    <th class="text-center" colspan="4">Arriendo</th>
+                                    <th class="text-center" colspan="5">Arriendo</th>
                                 </tr>
                                 <th>Nº</th>
                                 <th>Rut</th>
@@ -128,7 +129,7 @@
                                 <th>Valor</th>
                                 <th>Imagen</th>
 
-                                <th>Inicio</th>
+                                <th colspan="2">Fecha y hora de inicio</th>
                                 <th class="text-center" colspan="3">Datos de entrega</th>
                             </tr>
                         </thead>
@@ -149,8 +150,9 @@
                                     </td>
 
                                     <td class="small">{{ $arriendo->fecha_inicio }}</td>
+                                    <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
                                     <td class="small">{{ $arriendo->fecha_entrega }}</td>
-                                    <td class="small">{{ $arriendo->hora_entrega }}</td>
+                                    <td class="small">{{ $arriendo->hora_entrega->format('H:i') }}</td>
                                     <td class="small text-center"><a href="{{Storage::url($arriendo->imagen_entrega)}}" target="_blank" class="btn btn-sm btn-info pb-0">
                                         <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                     </a>

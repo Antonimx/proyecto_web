@@ -18,13 +18,13 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('usuarios-gestion'))
+        if(Gate::denies('admin-gestion'))
         {
             return redirect()->route('home.index');
         }
-
-        $usuarios = Usuario::orderBy('nombre')->get();
-        return view('usuarios.index',compact('usuarios'));
+        $perfiles = Perfil::all();
+        $usuarios = Usuario::orderBy('perfil_id')->get();
+        return view('usuarios.index',compact('usuarios','perfiles'));
     }
     
     public function login()
@@ -47,7 +47,15 @@ class UsuariosController extends Controller
         {
             //credenciales correctas
             $request->session()->regenerate();
-            return redirect()->route('home.index');
+            if(Auth::user()->activo){
+                return redirect()->route('home.index');
+            }
+            else{
+                Auth::logout();
+                return back()->withErrors('Usuario baneado')->onlyInput('email');
+
+            }
+
         }
         return back()->withErrors('Credenciales incorrectas.')->onlyInput('email');
     }
@@ -57,8 +65,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        $perfiles = Perfil::all();
-        return view('usuarios.create',compact('perfiles'));
+        //
     }
 
     /**
@@ -72,7 +79,7 @@ class UsuariosController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->perfil_id = $request->perfil_id;
         $usuario->save();
-        return redirect()->route('usuarios.index')->with('success','Datos guardados correctamente.');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -94,26 +101,53 @@ class UsuariosController extends Controller
         return view('usuarios.edit',compact('usuario','perfiles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UsuarioRequest $request, Usuario $usuario)
+    
+    public function updateMe(UsuarioRequest $request, $email)
+    {
+        $usuario = Usuario::find($email);
+        $usuario->email = $request->email;
+        $usuario->nombre = $request->nombre;
+        if($request->password != ''){
+            $usuario->password = Hash::make($request->password);
+        }
+        $usuario->save();
+        return redirect()->route('usuarios.index');
+    }
+
+    public function update(UsuarioRequest $request, $email)
     {
 
+        $usuario = Usuario::find($email);
         $usuario->email = $request->email;
-        $usuario->password = Hash::make($request->password);
         $usuario->nombre = $request->nombre;
         $usuario->perfil_id = $request->perfil_id;
         $usuario->save();
-        return redirect()->route('usuarios.index')->with('success','Datos actualizados correctamente.');
+        return redirect()->route('usuarios.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(UsuarioRequest $request,$email)
     {
-        $usuario->delete();
+        $usuario = Usuario::find($email);
+        if(Auth::user()->email == $usuario->email){
+            return redirect()->route('usuarios.index');
+        }
+        $usuario->activo = false;
+        $usuario->save();
+
         return redirect()->route('usuarios.index');
     }
+
+    public function desban(UsuarioRequest $request,$email)
+    {
+        $usuario = Usuario::find($email);
+        $usuario->activo = true;
+        $usuario->save();
+
+        return redirect()->route('usuarios.index');
+    }
+
+
 }

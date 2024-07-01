@@ -6,6 +6,8 @@ use App\Models\Vehiculo;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Http\Requests\VehiculoRequest;
+use Illuminate\Support\Facades\Gate;
+
 
 
 class VehiculosController extends Controller
@@ -25,10 +27,13 @@ class VehiculosController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('admin-gestion'))
+        {
+            return redirect()->route('home.index');
+        }
         $vehiculos = Vehiculo::all();
         $tipos = Tipo::all();
         return view('vehiculos.create',compact('vehiculos','tipos'));
-
     }
 
     /**
@@ -47,7 +52,7 @@ class VehiculosController extends Controller
             'tipo_id' => $request->tipo_id,
         ]);
         $vehiculo->save();
-        return redirect()->route('vehiculos.index')->with('success','Datos guardados correctamente.');
+        return redirect()->route('vehiculos.index');
 
     }
 
@@ -65,6 +70,10 @@ class VehiculosController extends Controller
      */
     public function edit($patente)
     {
+        if(Gate::denies('admin-gestion'))
+        {
+            return redirect()->route('home.index');
+        }
         $vehiculo = Vehiculo::find($patente);
         return view('vehiculos.edit',compact('vehiculo'));
     }
@@ -84,7 +93,16 @@ class VehiculosController extends Controller
         }
 
         $vehiculo->save();
-        return redirect()->route('vehiculos.index')->with('success','Datos actualizados correctamente.');
+        return redirect()->route('vehiculos.index');
+    }
+
+    public function updateEstado(VehiculoRequest $request,$patente)
+    {
+        $vehiculo = Vehiculo::find($patente);
+        $vehiculo->estado = $request->estado;
+        $vehiculo->save();
+
+        return redirect()->route('vehiculos.index');
     }
 
     /**

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_inicio');
             $table->string('imagen_inicio');
+            $table->time('hora_inicio');
             $table->date('fecha_entrega')->nullable();
             $table->time('hora_entrega')->nullable();
             $table->string('imagen_entrega')->nullable();

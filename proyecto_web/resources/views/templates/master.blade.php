@@ -66,18 +66,18 @@
                   </li>
               </ul>
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="manageUsuarioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          @auth
-                          {{ Auth::user()->nombre }} <i class="material-icons ms-2">person</i>
-                          @endauth
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="manageUsuarioDropdown">
-                          <li><a class="dropdown-item" href="#">Administrar cuenta</a></li>
-                          <li><a class="dropdown-item" href="{{ route('usuarios.logout') }}">Cerrar sesión</a></li>
-                      </ul>
-                  </li>
-              </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="manageUsuarioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @auth
+                        {{ Auth::user()->nombre }} <i class="material-icons ms-2">person</i>
+                        @endauth
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark bg-dark dropdown-menu-end" aria-labelledby="manageUsuarioDropdown">
+                        <li><a class="dropdown-item" href="{{ route('usuarios.edit',Auth::user()->email) }}">Administrar cuenta</a></li>
+                        <li><a class="dropdown-item" href="{{ route('usuarios.logout') }}">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
           </div>
       </div>
   </nav>
