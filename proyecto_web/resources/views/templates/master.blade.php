@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página con Navbar de Bootstrap</title>
+    <title>Arriendo Hatsune Miku LTDA</title>
     <!-- Enlace al archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/custom-bs.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -17,7 +17,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-          <a class="navbar-brand me-2" href="#">
+          <a class="navbar-brand me-2" href="{{route('home.index')}}">
             <img src="{{ Storage::url('imgs/miku_icon.png') }}" alt="Bootstrap" width="45" height="37">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
