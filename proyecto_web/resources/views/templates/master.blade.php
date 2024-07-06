@@ -28,11 +28,13 @@
                   <li class="nav-item">
                       <a class="nav-link @if(Route::current()->getName() == 'home.index') active @endif " aria-current="page" href="{{route('home.index')}}">Inicio</a>
                   </li>
+                @if(Gate::allows('admin-gestion'))
                   <li class="nav-item">
                       <a class="nav-link @if(Route::current()->getName() == 'usuarios.index' ||
                         Route::current()->getName() == 'usuarios.edit' ||
                         Route::current()->getName() == 'usuarios.create') active @endif " aria-current="page" href="{{route('usuarios.index')}} ">Usuarios</a>
                   </li>
+                @endif
                   <li class="nav-item">
                       <a class="nav-link @if(Route::current()->getName() == 'clientes.index' ||
                         Route::current()->getName() == 'clientes.create' ||
@@ -50,8 +52,10 @@
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item @if(Route::current()->getName() == 'vehiculos.index') active @endif" href="{{route('vehiculos.index')}}">Gestionar Vehículos</a></li>
+                        @if(Gate::allows('admin-gestion'))
                           <li><a class="dropdown-item @if(Route::current()->getName() == 'tipos.index') active @endif" href="{{route('tipos.index')}}">Gesionar Tipos de vehiculos</a></li>
-                      </ul>
+                        @endif
+                        </ul>
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link @if(Route::current()->getName() == 'arriendos.index' ||

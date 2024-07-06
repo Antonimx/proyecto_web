@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ArriendoRequest;
+use App\Http\Requests\ArriendoEntregaRequest;
 use App\Models\Arriendo;
 use App\Models\Cliente;
 use App\Models\Vehiculo;
@@ -81,8 +82,9 @@ class ArriendosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ArriendoRequest $request, $id)
+    public function update(ArriendoEntregaRequest $request, $id)
     {
+        
         $arriendo = Arriendo::find($id);
         
         if ($request->hasFile('imagen_entrega')) {
@@ -97,7 +99,6 @@ class ArriendosController extends Controller
         Vehiculo::where('patente',$arriendo->patente)->update(['estado'=>1]);
 
         return redirect()->route('arriendos.gestionar');
-        //->with('success','Entrega añaddida correctamente.');
     }
 
     /**

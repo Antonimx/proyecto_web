@@ -6,6 +6,16 @@
 <div class="row">
     {{-- TABLA DE ARRIENDOS VIGENTES --}}
     <div class="col-12 mb-3">
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <p>Por favor solucione los siguientes problemas:</p>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="card border-info">
             <div class="card-header bg-info text-white" style="font-weight: bold;">
                 <h5 class="m-0">Arriendos vigentes</h5>
@@ -72,15 +82,30 @@
                                             @method('PUT')
                                             <div class="mb-3">
                                                 <label for="fecha" class="form-label text-dark">Fecha de entrega</label>
-                                                <input type="date" id="fecha" name="fecha_entrega" min="{{ $arriendo->fecha_inicio }}" class="form-control" required>
+                                                <input type="date" id="fecha" name="fecha_entrega"  min="{{ $arriendo->fecha_inicio }}" class="form-control @error('fecha_entrega') is-invalid @enderror" value="{{old('fecha_entrega')}}" required>
+                                                @error('fecha_entrega')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hora" class="form-label text-dark">Hora de entrega</label>
-                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio)min="{{ $arriendo->hora_inicio }}"@endif class="form-control" required>
+                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio) min="{{ $arriendo->hora_inicio }}"@endif @error('hora_entrega') is-invalid @enderror value="{{old('hora_entrega')}}" class="form-control" required>
+                                                @error('hora_entrega')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="imagen" class="form-label text-dark">Imagen de entrega</label>
-                                                <input type="file" id="imagen" name="imagen_entrega" class="form-control" required>
+                                                <input type="file" id="imagen" name="imagen_entrega" @error('imagen_entrega') is-invalid @enderror class="form-control" required>
+                                                @error('imagen_entrega')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="modal-footer">

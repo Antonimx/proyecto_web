@@ -44,25 +44,45 @@
           <li><a class="dropdown-item" href="#" onclick="selectCliente('{{$cliente->rut}}')">{{$cliente->rut}} {{$cliente->nombre}}</a></li>
         @endforeach
       </ul>
-      <input type="text" class="form-control" aria-label="Text input with dropdown button" id="clienteSeleccionado" name="rut">
+      <input type="text" class="form-control @error('rut') is-invalid @enderror" aria-label="Text input with dropdown button" id="clienteSeleccionado" name="rut"  value="{{old('rut')}}">
+      @error('rut')
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+      @enderror
     </div>
     <div class="row">
       <div class="col-lg-3">
         <div class="mb-3">
           <label for="fecha" class="form-label text-dark">Fecha de arriendo</label>
-          <input type="date" id="fecha" name="fecha_inicio" class="form-control">
+          <input type="date" id="fecha" name="fecha_inicio" class="form-control @error('fecha_inicio') is-invalid @enderror" >
+          @error('fecha_inicio')
+          <div class="invalid-feedback">
+              {{$message}}
+          </div>
+          @enderror
         </div>
       </div>
       <div class="col-lg-3">
         <div class="mb-3">
           <label for="hora" class="form-label text-dark">Hora</label>
-          <input type="time" id="hora" name="hora_inicio" class="form-control">
+          <input type="time" id="hora" name="hora_inicio" class="form-control @error('hora_inicio') is-invalid @enderror" >
+          @error('hora_inicio')
+          <div class="invalid-feedback">
+              {{$message}}
+          </div>
+          @enderror
         </div>
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="patente" class="form-label">Patente</label>
-          <input type="text" class="form-control" id="patente" name="patente" value="{{$vehiculo->patente}}" readonly>
+          <input type="text" class="form-control @error('patente') is-invalid @enderror " id="patente" name="patente" value="{{$vehiculo->patente}}" readonly>
+          @error('patente')
+          <div class="invalid-feedback">
+              {{$message}}
+          </div>
+          @enderror
         </div>
       </div>
     </div>
@@ -75,6 +95,7 @@
       </div>
     </div>
   </form>
+  {{-- /FORMULARIO --}}
 </row>
 
 <script>
@@ -90,5 +111,4 @@
 
 
 </script>
-{{-- /FORMULARIO --}}
 @endsection

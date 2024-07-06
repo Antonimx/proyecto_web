@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\RutArriendoRule;
+use App\Rules\PatenteArriendoRule;
+
 
 class ArriendoRequest extends FormRequest
 {
@@ -21,8 +24,22 @@ class ArriendoRequest extends FormRequest
      */
     public function rules(): array
     {
+        
         return [
-            
+            'rut' => ['required',new RutArriendoRule(request('rut'))],
+            'patente' => ['required',new PatenteArriendoRule(request('patente'))],
+            'fecha_inicio' => ['required', 'date'],
+            'hora_inicio' => ['required', 'date_format:H:i'],
+        ];
+    }
+    
+    public function messages():array
+    {
+        return [
+            'rut.required' => 'Indique el rut del cliente',
+            'patente.required' => 'Indique la patente del vehículo',
+            'fecha_inicio.required' => 'Indique la fecha',
+            'hora_inicio.required' => 'Indique la hora',
         ];
     }
 }

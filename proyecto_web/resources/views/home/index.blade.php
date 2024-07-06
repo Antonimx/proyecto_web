@@ -7,9 +7,10 @@
         <h3 class="text-info">Bienvenido al sistema de arriendo de autos</h3>
     </div>
 </div>
-<hr class="bg-info border-info" style="height: 2px;">
-<div class="row">
+<hr class="bg-info border-info " style="height: 2px;">
+<div class="row d-flex justify-content-center">
     <!-- usuario -->
+    @if(Gate::allows('admin-gestion'))
     <div class="col-12 col-md-6 col-lg-3 mb-3 border-info">
         <div>
             <div class="card text-dark border-info" style="width: 18rem;">
@@ -21,6 +22,8 @@
               </div>
         </div>
     </div>
+    @endif
+
     <!-- cliente -->
     <div class="col-12 col-md-6 col-lg-3 mb-3 border-info">
         <div>
