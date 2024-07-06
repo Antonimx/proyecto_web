@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TipoRequest extends FormRequest
+class TipoUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,19 +22,18 @@ class TipoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['required','alpha'],
-            'valor' => ['required','int','gt:1'],
+            'nombreUpdate' => ['required'],
+            'valorUpdate' => ['required','int','gt:1'],
         ];
     }
     
     public function messages():array
     {
         return [
-            'nombre.required' => 'Indique nombre del tipo vehiculo',
-            'nombre.alpha' => 'El nombre debe contener solo letras',
-            'valor.required' => 'Indique la el valor',
-            'valor.int' => 'Indique un valor numerico',
-            'valor.gt' => 'El valor debe ser mayor a 1',
+            'nombreUpdate.required' => 'Indique nombre del tipo vehiculo',
+            'valorUpdate.required' => 'Indique la el valor',
+            'valorUpdate.int' => 'Indique un valor numerico',
+            'valorUpdate.gt' => 'El valor debe ser mayor a 1',
         ];
     }
 }

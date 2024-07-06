@@ -22,7 +22,21 @@ class UsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required'],
+            'nombre' => ['required'],
+            'password' => ['required', 'min:8'],
+            'perfil_id' => ['required'],
+        ];
+    }
+    
+    public function messages():array
+    {
+        return [
+            'email.required' => 'Indique correo electronico',
+            'nombre.required' => 'Indique nombre de usuario',
+            'password.min' => 'La contraseña debe contener al menos 8 caracteres',
+            'password.required' => 'Indique la contraseña',
+            'perfil_id.required' => 'Seleccione perfil de usuario',
         ];
     }
 }

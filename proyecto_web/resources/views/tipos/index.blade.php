@@ -5,6 +5,16 @@
 <x-titulo-gestion :urlVolver="'vehiculos.index'" :titulo="'Gestión de tipos vehículos'" :boton="false" :urlBoton="'tipos.create'" :textoBoton="'Agregar tipo'"/>
 
 <div class="row">
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <p>Por favor solucione los siguientes problemas:</p>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="col-lg-9">
         <div class="card">
             <h5 class="card-header bg-info text-white">Listado de tipos de vehículos</h5>
@@ -54,12 +64,22 @@
                                             @method('PUT')
                                             <div class="mb-3">
                                                 <label for="nombre" class="form-label text-dark">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $tipo->nombre }}">
+                                                <input type="text" class="form-control @error ('nombreUpdate') is-invalid @enderror" id="nombre" name="nombreUpdate" value="{{ $tipo->nombre }}">
+                                                    @error('nombreUpdate')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
                                             </div>
                                             <div class="mb-3">
                                                     <label for="valor" class="form-label text-dark ">Valor:</label>
-                                                    <input type="number" min="1" class="form-control"  id="valor" name="valor" value="{{ $tipo->valor }}">
-                                            </div>
+                                                    <input type="number" min="1" class="form-control @error ('valorUpdate') is-invalid @enderror"  id="valor" name="valorUpdate" value="{{ $tipo->valor }}">
+                                                    @error('valorUpdate')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="text-white btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -88,11 +108,21 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nombre" class="form-label text-dark">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <input type="text" class="form-control @error ('nombre') is-invalid @enderror" id="nombre" name="nombre">
+                    @error('nombre')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                         <label for="valor" class="form-label text-dark ">Valor:</label>
-                        <input type="number" min="1" class="form-control"  id="valor" name="valor">
+                        <input type="number" min="1" class="form-control @error ('valor') is-invalid @enderror"  id="valor" name="valor">
+                        @error('valor')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-secondary text-white">Agregar tipo de vehículo.</button>
