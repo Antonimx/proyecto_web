@@ -34,9 +34,9 @@ class VehiculosController extends Controller
         {
             return redirect()->route('home.index');
         }
-        $vehiculos = Vehiculo::all();
+
         $tipos = Tipo::all();
-        return view('vehiculos.create',compact('vehiculos','tipos'));
+        return view('vehiculos.create',compact('tipos'));
     }
 
     /**

@@ -50,7 +50,7 @@
                                   </a>
                                   @else
                                   <a href="#" class="btn btn-sm btn-info pb-0" data-bs-toggle="modal" title="Desbanear usuario" data-bs-target="#desbanModal{{$usuario->email}}">
-                                      <i class="material-icons text-white" style="font-size: 1.1em">person</i>
+                                      <i class="material-icons text-white" style="font-size: 1.1em">person_add</i>
                                   </a>
                                   @endif
                                   <a class="btn btn-sm btn-secondary pb-0" data-bs-toggle="modal" title="Editar datos" data-bs-target="#editarModal{{$usuario->email}}">

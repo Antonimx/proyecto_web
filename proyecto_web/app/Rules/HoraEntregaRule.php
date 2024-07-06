@@ -12,9 +12,11 @@ class HoraEntregaRule implements ValidationRule
 {
     
     private $arriendoId;
+    private $fechaEntrega;
 
-    public function __construct($arriendoId){
+    public function __construct($arriendoId,$fechaEntrega){
         $this->arriendoId = $arriendoId;
+        $this->fechaEntrega = $fechaEntrega;
     }
     /**
      * Run the validation rule.
@@ -24,10 +26,8 @@ class HoraEntregaRule implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $arriendo = Arriendo::find($this->arriendoId);
-        $fechaHoy = Carbon::now()->toDateString();
         $horaInicio = Carbon::parse($arriendo->hora_inicio);
-
-        if($fechaHoy == $arriendo->fecha_inicio && $value < $horaInicio){
+        if($this->fechaEntrega == $arriendo->fecha_inicio && $value < $arriendo->hora_inicio){
             $fail('La hora no puede ser antes que la del inicio del arriendo.');
         }
     }

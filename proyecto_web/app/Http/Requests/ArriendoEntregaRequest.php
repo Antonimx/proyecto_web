@@ -27,8 +27,9 @@ class ArriendoEntregaRequest extends FormRequest
         
         return [
             'fecha_entrega' => ['required', 'date', new FechaEntregaRule(request('arriendo'))],
-            'hora_entrega' =>['required','date_format:H:i', new HoraEntregaRule(request('arriendo'))],
+            'hora_entrega' =>['required','date_format:H:i',new HoraEntregaRule(request('arriendo'),request('fecha_entrega'))],
             'imagen_entrega' => ['required','image','mimes:png,jpg,jpeg']
+            //new HoraEntregaRule(request('arriendo'))
         ];
     }
 
