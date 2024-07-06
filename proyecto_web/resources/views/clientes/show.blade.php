@@ -33,7 +33,7 @@
                                 <td class="small">$ {{ number_format($arriendo->vehiculo->tipo->valor, 0, ',', '.') }}</td>
                                 <td class="small">{{ $arriendo->fecha_inicio }}</td>
                                 <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
-                                <td class="small text-center"><a href="http://localhost:8000/{{$arriendo->imagen_inicio}}" target="_blank" class="btn btn-sm bg-info pb-0">
+                                <td class="small text-center"><a href="{{Storage::url($arriendo->imagen_inicio)}}" target="_blank" class="btn btn-sm bg-info pb-0">
                                     <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                 </a>
                                 </td>
@@ -77,7 +77,7 @@
                                     <td class="small">{{ $arriendo->patente }}</td>
                                     <td class="small">{{ $arriendo->vehiculo->nombre }}</td>
                                     <td class="small">$ {{ number_format($arriendo->vehiculo->tipo->valor, 0, ',', '.') }}</td>
-                                    <td class="small text-center"><a href="#" target="_blank" class="btn btn-sm btn-info pb-0">
+                                    <td class="small text-center"><a href="{{Storage::url($arriendo->imagen_inicio)}}" target="_blank" class="btn btn-sm btn-info pb-0">
                                         <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                     </a>
                                     </td>
@@ -86,7 +86,7 @@
                                     <td class="small">{{ $arriendo->hora_inicio->format('H:i') }}</td>
                                     <td class="small">{{ $arriendo->fecha_entrega }}</td>
                                     <td class="small">{{ $arriendo->hora_entrega->format('H:i') }}</td>
-                                    <td class="small text-center"><a href="http://localhost:8000/{{$arriendo->imagen_entrega}}" target="_blank" class="btn btn-sm btn-info pb-0">
+                                    <td class="small text-center"><a href="{{Storage::url($arriendo->imagen_entrega)}}" target="_blank" class="btn btn-sm btn-info pb-0">
                                         <i class="material-icons text-white" style="font-size: 1.1em">image</i>
                                     </a>
                                     </td>
