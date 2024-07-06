@@ -82,7 +82,7 @@
                                             @method('PUT')
                                             <div class="mb-3">
                                                 <label for="fecha" class="form-label text-dark">Fecha de entrega</label>
-                                                <input type="date" id="fecha" name="fecha_entrega"  min="{{ $arriendo->fecha_inicio }}" class="form-control @error('fecha_entrega') is-invalid @enderror" value="{{old('fecha_entrega')}}" required>
+                                                <input type="date" id="fecha" name="fecha_entrega"  min="{{ $arriendo->fecha_inicio }}" class="form-control @error('fecha_entrega') is-invalid @enderror" value="{{old('fecha_entrega')}}" >
                                                 @error('fecha_entrega')
                                                 <div class="invalid-feedback">
                                                     {{$message}}
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hora" class="form-label text-dark">Hora de entrega</label>
-                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio) min="{{ $arriendo->hora_inicio }}"@endif @error('hora_entrega') is-invalid @enderror value="{{old('hora_entrega')}}" class="form-control" required>
+                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio) min="{{ $arriendo->hora_inicio }}" value="{{old('hora_entrega')}}" class="form-control @endif @error('hora_entrega') is-invalid @enderror" >
                                                 @error('hora_entrega')
                                                 <div class="invalid-feedback">
                                                     {{$message}}
@@ -100,7 +100,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="imagen" class="form-label text-dark">Imagen de entrega</label>
-                                                <input type="file" id="imagen" name="imagen_entrega" @error('imagen_entrega') is-invalid @enderror class="form-control" required>
+                                                <input type="file" id="imagen" name="imagen_entrega" class="form-control @error('imagen_entrega') is-invalid @enderror " >
                                                 @error('imagen_entrega')
                                                 <div class="invalid-feedback">
                                                     {{$message}}

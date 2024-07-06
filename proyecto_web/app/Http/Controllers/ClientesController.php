@@ -72,7 +72,6 @@ class ClientesController extends Controller
         $cliente = Cliente::find($rut);
         $cliente->nombre = $request->nombreUpdate;
         $cliente->fono = $request->fonoUpdate;
-        dd($cliente -> nombre);
         $cliente->save();
         return redirect()->route('clientes.index');
     }

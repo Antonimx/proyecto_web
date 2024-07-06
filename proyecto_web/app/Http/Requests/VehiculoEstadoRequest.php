@@ -3,8 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Rules\EstadoUpdateRule;
 
-class ClienteUpdateRequest extends FormRequest
+
+class VehiculoEstadoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +25,7 @@ class ClienteUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombreUpdate' => ['required','alpha'],
-            'fonoUpdate' => ['required','numeric'],
+            'estado' => ['required', Rule::in([0,1,3]), new EstadoUpdateRule(request('patente'))],
         ];
     }
 
@@ -31,10 +33,8 @@ class ClienteUpdateRequest extends FormRequest
     {
 
         return [
-            'nombreUpdate.required' => 'Por favor indicar el nombre.',
-            'nombreUpdate.alpha' => 'El nombre solo debe contener letras.',
-            'telefonoUpdate.required' => 'Por favor indicar el numero de telefono.',
-            'telefonoUpdate.numeric' => 'el telefono solo debe contener numeros.',
+            'estado.required' => 'Indique el estado',
+            'estado.in' => 'No existe ese estado',
         ];
     }
 }

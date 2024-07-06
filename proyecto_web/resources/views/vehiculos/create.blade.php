@@ -11,19 +11,39 @@
             <div class="row">
                 <div class="mb-3 col-lg-6">
                     <label for="patente" class="form-label text-dark">Patente</label>
-                    <input type="text" class="form-control" id="patente" name="patente">
+                    <input type="text" class="form-control @error('patente') is-invalid @enderror" id="patente" name="patente" value="{{old('patente')}}">
+                    @error('patente')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 col-lg-6">
                     <label for="nombre" class="form-label text-dark">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{old('nombre')}}">
+                    @error('nombre')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 col-lg-6">
                     <label for="marca" class="form-label text-dark">Marca</label>
-                    <input type="text" class="form-control" id="marca" name="marca">
+                    <input type="text" class="form-control @error('marca') is-invalid @enderror" id="marca" name="marca" value="{{old('marca')}}">
+                    @error('marca')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 col-lg-6">
                     <label for="modelo" class="form-label text-dark">Modelo</label>
-                    <input type="text" class="form-control" id="modelo" name="modelo">
+                    <input type="text" class="form-control @error('modelo') is-invalid @enderror" id="modelo" name="modelo" value="{{old('modelo')}}">
+                    @error('modelo')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div class="row">
@@ -33,25 +53,40 @@
                             <label for="tipo_id" class="form-label text-dark">Tipo de vehículo</label>
                         </div>
                         <div class="col-lg-12">
-                            <select class="custom-select mr-sm-2 form-control" id="tipo_id" name="tipo_id">
+                            <select class="custom-select mr-sm-2 form-control @error('tipo_id') is-invalid @enderror" id="tipo_id" name="tipo_id">
                                 <option selected value="0">Seleccione</option>
                                 @foreach($tipos as $tipo)
                                 <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
                                 @endforeach
                             </select>
+                            @error('tipo_id')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                     </div>
 
                 </div>
                 <div class="mb-3 col-lg-9">
                     <label for="imagen" class="form-label text-dark">Imagen del vehículo</label>
-                    <input type="file" id="imagen" name="imagen" class="form-control">
+                    <input type="file" id="imagen" name="imagen" class="form-control @error('imagen') is-invalid @enderror">
+                    @error('imagen')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="mb-3 col-lg-12">
                     <label for="descripcion" class="form-label text-dark">Descripción</label>
-                    <textarea rows="5" class="form-control" id="descripcion" maxlength="250" name="descripcion"></textarea>
+                    <textarea rows="5" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" maxlength="300" name="descripcion">{{old('descripcion')}}</textarea>
+                    @error('descripcion')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
             </div>
 

@@ -24,6 +24,16 @@
 <hr class="bg-info border-info" style="height: 2px;">
 
 <div class="row">
+  @if($errors->any())
+  <div class="alert alert-danger">
+      <p>Por favor solucione los siguientes problemas:</p>
+      <ul>
+          @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+  @endif
   @foreach($vehiculos as $vehiculo)
       <div class="col-md-4 mb-3">
           <div class="card border-info h-100 text-dark">
@@ -72,6 +82,12 @@
               <form action="{{route('vehiculos.updateEstado',$vehiculo->patente)}}" method="POST">
                 @csrf
                 @method('PUT')
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="estado" id="estado_de_baja" value="1">
+                  <label class="form-check-label" for="estado_disponible">
+                    Disponible
+                  </label>
+                </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="estado" id="estado_de_baja" value="0">
                   <label class="form-check-label" for="estado_de_baja">

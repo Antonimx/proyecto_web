@@ -28,7 +28,7 @@ class ArriendoEntregaRequest extends FormRequest
         return [
             'fecha_entrega' => ['required', 'date', new FechaEntregaRule(request('arriendo'))],
             'hora_entrega' =>['required','date_format:H:i', new HoraEntregaRule(request('arriendo'))],
-            'imagen_entrega' => ['required','image','mimes:png,jpg,jpeg','max:2048','dimensions:ratio=2/3']
+            'imagen_entrega' => ['required','image','mimes:png,jpg,jpeg']
         ];
     }
 
@@ -41,7 +41,6 @@ class ArriendoEntregaRequest extends FormRequest
 
             'imagen_entrega.image' => 'Debe ser una imagen',
             'imagen_entrega.mimes' => 'Error de formato, solo puede ser png, jpg o jpeg',
-            'imagen_entrega.dimension' => 'Debe ser de dimensión 2:3',
         ];
     }
 }

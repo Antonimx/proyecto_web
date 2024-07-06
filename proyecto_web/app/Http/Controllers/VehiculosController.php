@@ -6,6 +6,8 @@ use App\Models\Vehiculo;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Http\Requests\VehiculoRequest;
+use App\Http\Requests\VehiculoUpdateRequest;
+use App\Http\Requests\VehiculoEstadoRequest;
 use Illuminate\Support\Facades\Gate;
 
 
@@ -17,6 +19,7 @@ class VehiculosController extends Controller
      */
     public function index()
     {
+        
         $vehiculos = Vehiculo::all();
         return view('vehiculos.index',compact('vehiculos'));
 
@@ -81,22 +84,22 @@ class VehiculosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(VehiculoRequest $request, $patente)
+    public function update(VehiculoUpdateRequest $request, $patente)
     {
         $vehiculo = Vehiculo::find($patente);
-        $vehiculo->nombre = $request->nombre;
-        $vehiculo->descripcion = $request->descripcion;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        if ($request->hasFile('imagen')) {
-            $vehiculo->imagen = $request->file('imagen')->store('public/imgs/vehiculos');
+        $vehiculo->nombre = $request->nombreUpdate;
+        $vehiculo->descripcion = $request->descripcionUpdate;
+        $vehiculo->marca = $request->marcaUpdate;
+        $vehiculo->modelo = $request->modeloUpdate;
+        if ($request->hasFile('imagenUpdate')) {
+            $vehiculo->imagen = $request->file('imagenUpdate')->store('public/imgs/vehiculos');
         }
-
+    
         $vehiculo->save();
         return redirect()->route('vehiculos.index');
     }
 
-    public function updateEstado(VehiculoRequest $request,$patente)
+    public function updateEstado(VehiculoEstadoRequest $request,$patente)
     {
         $vehiculo = Vehiculo::find($patente);
         $vehiculo->estado = $request->estado;
@@ -110,6 +113,9 @@ class VehiculosController extends Controller
      */
     public function destroy(Vehiculo $vehiculo)
     {
+        if($vehiculo->estado==2){
+            return redirect()->route('vehiculos.index')->withErrors('No puede eliminar un vehículo arrendado');
+        }
         $vehiculo->delete();
         return redirect()->route('vehiculos.index');
     }

@@ -7,6 +7,16 @@
 
 <div class="row ">
     <div class="col-9 mb-3">
+      @if($errors->any())
+      <div class="alert alert-danger">
+          <p>Por favor solucione los siguientes problemas:</p>
+          <ul>
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
         <div class="card border-info">
             <div class="card-header bg-info text-white" style="font-weight: bold;">
                 <h5 class="m-0">Listado de clientes</h5>
@@ -117,8 +127,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="fono" class="form-label text-dark">Número de contacto</label>
-                    <input type="text" class="form-control @error ('telefono') is-invalid @enderror" value="{{old('telefono')}}" id="telefono" name="telefono">
-                    @error('telefono')
+                    <input type="text" class="form-control @error ('telefono') is-invalid @enderror" value="{{old('fono')}}" id="telefono" name="fono">
+                    @error('fono')
                     <div id= 'telFeedback' class="invalid-feedback">
                       {{ $message }}
                     </div>

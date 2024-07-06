@@ -25,7 +25,7 @@ Route::post('/usuarios/autenticar',[UsuariosController::class,'autenticar'])->na
 Route::resource('/usuarios',UsuariosController::class)->middleware('auth');
 
 //Vehiculos
-Route::put('/vehiculos/{patente}', [VehiculosController::class, 'updateEstado'])->name('vehiculos.updateEstado');
+Route::put('/vehiculos/{patente}/estado', [VehiculosController::class, 'updateEstado'])->name('vehiculos.updateEstado')->middleware('auth');
 Route::resource('/vehiculos',VehiculosController::class)->middleware('auth');
 
 //Tipos

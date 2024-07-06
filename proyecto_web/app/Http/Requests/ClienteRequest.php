@@ -24,7 +24,7 @@ class ClienteRequest extends FormRequest
         return [
             'rut' => ['required'],
             'nombre' => ['required','alpha'],
-            'telefono' => ['required','numeric'],
+            'fono' => ['required','numeric'],
         ];
     }
 
@@ -35,8 +35,8 @@ class ClienteRequest extends FormRequest
             'rut.required' => 'Por favor indicar el rut.',
             'nombre.required' => 'Por favor indicar el nombre.',
             'nombre.alpha' => 'El nombre solo debe contener letras.',
-            'Telefono.required' => 'Por favor indicar el numero de telefono.',
-            'telefono.numeric' => 'el telefono solo debe contener numeros.',
+            'fono.required' => 'Por favor indicar el numero de telefono.',
+            'fono.numeric' => 'el telefono solo debe contener numeros.',
         ];
     }
 }   
