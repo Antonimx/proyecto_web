@@ -23,7 +23,7 @@ class ClienteUpdateRequest extends FormRequest
     {
         return [
             'nombreUpdate' => ['required','alpha'],
-            'fonoUpdate' => ['required','numeric'],
+            'fonoUpdate' => ['required','regex:/^[0-9!@#\$%\^&\*\(\)_\+\-=\[\]{};:"\\|,.<>\/?]*$/'],
         ];
     }
 
@@ -33,8 +33,8 @@ class ClienteUpdateRequest extends FormRequest
         return [
             'nombreUpdate.required' => 'Por favor indicar el nombre.',
             'nombreUpdate.alpha' => 'El nombre solo debe contener letras.',
-            'telefonoUpdate.required' => 'Por favor indicar el numero de telefono.',
-            'telefonoUpdate.numeric' => 'el telefono solo debe contener numeros.',
+            'fonoUpdate.required' => 'Por favor indicar el numero de telefono.',
+            'fonoUpdate.regex' => 'No puede contener letras',
         ];
     }
 }

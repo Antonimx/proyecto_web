@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hora" class="form-label text-dark">Hora de entrega</label>
-                                                <input type="time" id="hora" name="hora_entrega" @if($fecha_hoy == $arriendo->fecha_inicio) min="{{ $arriendo->hora_inicio }}" value="{{old('hora_entrega')}}" class="form-control @endif @error('hora_entrega') is-invalid @enderror" >
+                                                <input type="time" id="hora" name="hora_entrega" class="form-control @error('hora_entrega') is-invalid @enderror" @if($fecha_hoy == $arriendo->fecha_inicio) min="{{ $arriendo->hora_inicio }}" @endif value="{{old('hora_entrega')}}" >
                                                 @error('hora_entrega')
                                                 <div class="invalid-feedback">
                                                     {{$message}}
