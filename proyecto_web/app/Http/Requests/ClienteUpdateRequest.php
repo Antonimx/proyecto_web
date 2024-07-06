@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClienteRequest extends FormRequest
+class ClienteUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class ClienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rut' => ['required'],
-            'nombre' => ['required','alpha'],
-            'telefono' => ['required','numeric'],
+            'nombreUpdate' => ['required','alpha'],
+            'telefonoUpdate' => ['required','numeric'],
         ];
     }
 
@@ -32,11 +31,10 @@ class ClienteRequest extends FormRequest
     {
 
         return [
-            'rut.required' => 'Por favor indicar el rut.',
-            'nombre.required' => 'Por favor indicar el nombre.',
-            'nombre.alpha' => 'El nombre solo debe contener letras.',
-            'Telefono.required' => 'Por favor indicar el numero de telefono.',
-            'telefono.numeric' => 'el telefono solo debe contener numeros.',
+            'nombreUpdate.required' => 'Por favor indicar el nombre.',
+            'nombreUpdate.alpha' => 'El nombre solo debe contener letras.',
+            'telefonoUpdate.required' => 'Por favor indicar el numero de telefono.',
+            'telefonoUpdate.numeric' => 'el telefono solo debe contener numeros.',
         ];
     }
-}   
+}

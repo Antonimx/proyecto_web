@@ -62,12 +62,12 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-3">
-                                            <label for="nombre" class="form-label text-dark">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $cliente->nombre }}">
+                                            <label for="nombre" class="form-label text-dark" >Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombreUpdate" value="{{ $cliente->nombre }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="fono" class="form-label text-dark">Número de contacto</label>
-                                            <input type="text" class="form-control" id="fono" name="fono" value="{{ $cliente->fono }}">
+                                            <input type="text" class="form-control" id="fono" name="fonoUpdate" value="{{ $cliente->fono }}">
                                         </div>
                                         <div class="d-flex justify-content-between "> 
                                           <button type="button" class="btn btn-danger text-white" data-bs-dismiss="modal">Cancelar</button>
@@ -97,16 +97,32 @@
               <form action="{{ route('clientes.store') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="rut" class="form-label text-dark">Rut</label>
-                    <input type="text" class="form-control" id="rut" name="rut">
-                </div>
+                  <label for="rut" class="form-label text-dark">Rut</label>
+                  <input type="text" class="form-control @error('rut') is-invalid @enderror" value="{{ old('rut') }}" id="rut" name="rut">
+                  @error('rut')
+                  <div id="rutFeedback" class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                  @enderror
+              </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label text-dark">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <input type="text" class="form-control @error ('nombre') is-invalid @enderror" value="{{old('nombre')}}" id="nombre" name="nombre">
+                    @error('nombre')
+                    <div id= 'nombreFeedback' class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                    
                 </div>
                 <div class="mb-3">
                     <label for="fono" class="form-label text-dark">Número de contacto</label>
-                    <input type="text" class="form-control" id="fono" name="fono">
+                    <input type="text" class="form-control @error ('telefono') is-invalid @enderror" value="{{old('telefono')}}" id="telefono" name="telefono">
+                    @error('telefono')
+                    <div id= 'telFeedback' class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="d-flex justify-content-end">
 
