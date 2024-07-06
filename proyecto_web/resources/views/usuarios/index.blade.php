@@ -7,6 +7,16 @@
 
 <div class="row">
     {{-- LISTADO USUARIOS --}}
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <p>Por favor solucione los siguientes problemas:</p>
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     <div class="col-9 mb-3">
         <div class="card border-info">
             <div class="card-header bg-info text-white" style="font-weight: bold;">
@@ -92,15 +102,27 @@
                                         @method('PUT')
                                         <div class="mb-3">
                                             <label for="email" class="form-label text-dark">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="{{ $usuario->email }}">
-                                        </div>
+                                            <input type="email" class="form-control @error ('emailUpdate') is-invalid @enderror" id="email" name="emailUpdate" value="{{ $usuario->email }}">
+                                            @error('emailUpdate')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                          </div>
                                         <div class="mb-3">
                                             <label for="nombre" class="form-label text-dark">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}">
-                                        </div>
+                                            <input type="text" class="form-control @error ('nombreUpdate') is-invalid @enderror" id="nombre" name="nombreUpdate" value="{{ $usuario->nombre }}">
+                                            @error('nombreUpdate')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                       
+                                          </div>
                                         <div class="mb-3">
                                             <label for="perfil_id" class="form-label text-dark">Perfil</label>
-                                            <select class="custom-select mr-sm-2 form-control" id="perfil_id" name="perfil_id">
+                                            <select class="custom-select mr-sm-2 form-control @error ('perfil_idUpdate')  is-invalid @enderror " id="perfil_idUpdate" name="perfil_idUpdate">
+                                              
                                                 <option selected value="{{$usuario->perfil->id}}">{{$usuario->perfil->nombre}}</option>
                                                 @foreach($perfiles as $perfil)
                                                     @if($perfil->id != $usuario->perfil->id)
@@ -108,6 +130,11 @@
                                                     @endif
                                                 @endforeach
                                             </select>
+                                            @error('perfil_idUpdate')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         <div class="d-flex justify-content-between "> 
                                           <button type="button" class="btn btn-danger text-white" data-bs-dismiss="modal">Cancelar</button>
@@ -133,26 +160,46 @@
     <div class="col-3 mb-3 d-flex justify-content-end">
         <div class="card border-secondary" style="width: 18rem;">
             <div class="card-header bg-secondary text-white" style="font-weight: bold;">
-                <h5 class="m-0">Agregar nuevo cliente</h5>
+                <h5 class="m-0">Agregar nuevo usuario</h5>
             </div>
             <div class="card-body">
                 <form action="{{ route('usuarios.store') }}" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label text-dark">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label text-dark">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <label for="nombre" class="form-label text-dark">Nombre de usuario</label>
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre">
+                    @error('nombre')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label text-dark">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="perfil_id" class="form-label text-dark">Perfil</label>
-                    <select class="custom-select mr-sm-2 form-control" id="perfil_id" name="perfil_id">
+                    <select class="custom-select mr-sm-2 form-control @error('perfil_id') is-invalid @enderror" id="perfil_id" name="perfil_id">
+                      @error('perfil_id')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                         <option selected value="0">Seleccione</option>
                         @foreach($perfiles as $perfil)
                         <option value="{{$perfil->id}}">{{$perfil->nombre}}</option>
@@ -172,3 +219,4 @@
     
 
 @endsection
+

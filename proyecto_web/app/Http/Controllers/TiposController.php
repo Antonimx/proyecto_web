@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\TipoRequest;
+use App\Http\Requests\TipoUpdateRequest;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -61,11 +62,11 @@ class TiposController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(TipoUpdateRequest $request, $id)
     {
         $tipo = Tipo::find($id);
-        $tipo->nombre = $request->nombre;
-        $tipo->valor = $request->valor;
+        $tipo->nombre = $request->nombreUpdate;
+        $tipo->valor = $request->valorUpdate;
         $tipo->save();
         return redirect()->route('tipos.index');
 

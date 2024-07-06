@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UsuarioRequest;
+use App\Http\Requests\UsuarioUpdateRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Models\Perfil;
@@ -114,13 +115,19 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function update(UsuarioRequest $request, $email)
-    {
+    public function update(UsuarioUpdateRequest $request, $email)
+    {   
+        // $request->validate([
+        //     'emailUpdate' => ['required'],
+        //     'nombreUpdate' => ['required'],
+        //     'perfil_idUpdate' => ['required'],
+
+        // ]);
 
         $usuario = Usuario::find($email);
-        $usuario->email = $request->email;
-        $usuario->nombre = $request->nombre;
-        $usuario->perfil_id = $request->perfil_id;
+        $usuario->email = $request->emailUpdate;
+        $usuario->nombre = $request->nombreUpdate;
+        $usuario->perfil_id = $request->perfil_idUpdate;
         $usuario->save();
         return redirect()->route('usuarios.index');
     }
