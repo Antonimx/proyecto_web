@@ -31,10 +31,10 @@ El sistema permite gestionar las siguientes entidades:
 - El ejecutivo NO PUEDE gestionar usuarios, gestionar tipos de vehiculos, gestionar vehiculos (excepto cambiar el estado de un vehiculo).
 - ~~Falta agregar campo de hora de inicio de las migraciones y editar sus respectivas tablas.~~
 - ~~El update de usuarios no funciona.~~
-- Falta editar portada y el navbar según nivel de acceso.
-- Falta validar los request.
+- ~~Falta editar portada y el navbar según nivel de acceso.~~
+- ~~Falta validar los request.~~
 - Ponerle más cosas a la portada?
-- Preguntar sobre cómo funciona el tema de los valores de los arriendos.
+- ~~Preguntar sobre cómo funciona el tema de los valores de los arriendos.~~
 
 ## Vistas
 - Listas 13/13

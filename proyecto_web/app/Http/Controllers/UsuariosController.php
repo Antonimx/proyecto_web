@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsuarioRequest;
 use App\Http\Requests\UsuarioUpdateRequest;
+use App\Http\Requests\UsuarioAdministrarRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Models\Perfil;
@@ -103,7 +104,7 @@ class UsuariosController extends Controller
     }
 
     
-    public function updateMe(UsuarioRequest $request, $email)
+    public function updateMe(UsuarioAdministrarRequest $request, $email)
     {
         $usuario = Usuario::find($email);
         $usuario->email = $request->email;
@@ -135,11 +136,11 @@ class UsuariosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UsuarioRequest $request,$email)
+    public function destroy(Request $request,$email)
     {
         $usuario = Usuario::find($email);
         if(Auth::user()->email == $usuario->email){
-            return redirect()->route('usuarios.index');
+            return redirect()->route('usuarios.index')->withErrors('No puede banear su propia cuenta');
         }
         $usuario->activo = false;
         $usuario->save();
@@ -147,7 +148,7 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function desban(UsuarioRequest $request,$email)
+    public function desban(Request $request,$email)
     {
         $usuario = Usuario::find($email);
         $usuario->activo = true;
